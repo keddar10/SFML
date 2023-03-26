@@ -34,7 +34,7 @@ Booster.cpp - znajdują się tu funkcje dotyczące wszystkich czterech boosteró
 * shield/destroyer - tworzący obwódkę wokół gracza, która niszczy wroga 
 * friendly/helper przywołujący strzelającego pomocnika, który również może niszczyć wrogów.
 Nad funkcjami klasy Booster spędziłem najwięcej czasu i było to dla mnie najtrudniejsze zadanie, szczególnie 
-odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania. Nie jestem również dumny z kilkukrotnie wielokrotnego zagnieżdżenia kodu w niektórych metodach tej klasy.
+odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania. Nie jestem jednak dumny z wielokrotnego zagnieżdżenia w niektórych metodach tej klasy.
 
 Player.cpp - znajdują się tu funkcje dotyczące tego, co dzieje się z graczem - ruch (choć to tylko sama logika ruchu), kolizje oraz obwódka
 po zebraniu boostera "shield"
