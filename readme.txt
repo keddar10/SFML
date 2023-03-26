@@ -8,8 +8,7 @@ o której wspomniałem w cv, można ją uruchomić poprzez wypakowanie paczki i 
 Sterowanie: przy pomocy strzałek poruszamy graczem - zielony klocek ("gracz", dla niego nie zrobiłem póki co grafiki)
 odradzający się w lewej górnej części ekranu, można zbierać monety znajdujące się na ekranie, dodają one punkty.
 Zetknięcie się z przeciwnikiem (latające shurikeny) powoduje śmierć i odjęcie punktów.
-Na planszy znajdują się również 4 boostery - accelerator, slower, shield/destroyer oraz friendly/helper, ich nazwy odzwierciedlają
-role, jakie zostały im przydzielone.
+Na planszy znajdują się również 4 boostery - accelerator, slower, shield/destroyer oraz friendly/helper, ich nazwy odzwierciedlają role, jakie zostały im przydzielone.
 
 Pod graczem znajduje się 6 mniejszych obiektów, a na spodzie planszy jeden większy. Są to elementy testowe, służące mi jako
 pomoc przy tworzeniu ekwipunku. Póki co mniejsze elementy - przedmioty - nie wywołują żadnych efektów, jednak po ich zebraniu 
@@ -35,7 +34,7 @@ Booster.cpp - znajdują się tu funkcje dotyczące wszystkich czterech boosteró
 * shield/destroyer - tworzący obwódkę wokół gracza, która niszczy wroga 
 * friendly/helper przywołujący strzelającego pomocnika, który również może niszczyć wrogów.
 Nad funkcjami klasy Booster spędziłem najwięcej czasu i było to dla mnie najtrudniejsze zadanie, szczególnie 
-odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania.
+odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania. Nie jestem również dumny z kilkukrotnie wielokrotnego zagnieżdżenia kodu w niektórych metodach tej klasy.
 
 Player.cpp - znajdują się tu funkcje dotyczące tego, co dzieje się z graczem - ruch (choć to tylko sama logika ruchu), kolizje oraz obwódka
 po zebraniu boostera "shield"
