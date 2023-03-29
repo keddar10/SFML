@@ -3,7 +3,7 @@ W tym repozytorium znajduje się wersja Release gry w sekcji Release z prawej st
 W folderze code natomiast znajdują się wszystkie pliki .h oraz .cpp, które są załączone do projektu.
 Jest ich całkiem sporo, dlatego pokrótce omówię te "większe i ciekawsze" z mojego punku widzenia.
 
-Game.cpp oraz SFML.cpp - mimo, że nie są to najciekawsze pliki do przejrzenia, to właśnie tutaj wywoływane są funkcje
+[Game.cpp](code/Game.cpp) oraz SFML.cpp - mimo, że nie są to najciekawsze pliki do przejrzenia, to właśnie tutaj wywoływane są funkcje
 pozwalające na granie. W Game.cpp tworzone są obiekty różnych klas (Player, Enemy, Booster, Item...) i w funkcji
 składowej tej klasy Loop() wywołwane są funkcje logiczne oraz te wizualne, pozwalające wyrysować obiekty na ekranie.
 W SFML.cpp tworzony jest obiekt klasy Game i wywołana funkcja Loop().
