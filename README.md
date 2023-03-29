@@ -12,6 +12,7 @@ w [SFML.cpp](code/SFML.cpp) natomiast tworzony jest obiekt klasy Game i wywołan
 * slower - spowalniający przeciwników, 
 * shield/destroyer - tworzący obwódkę wokół gracza, która niszczy wroga 
 * friendly/helper przywołujący strzelającego pomocnika, który również może niszczyć wrogów.
+
 Nad funkcjami klasy Booster spędziłem najwięcej czasu i było to dla mnie najtrudniejsze zadanie, szczególnie 
 odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania. Nie jestem jednak dumny z wielokrotnego zagnieżdżenia w niektórych metodach tej klasy,
 
