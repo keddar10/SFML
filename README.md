@@ -23,8 +23,11 @@ odpowiednie przekazanie i resetowanie czasów odrodzenia/czasów trwania. Nie je
 Pozostałe klasy są prostsze niż te wyżej wymienione, ale jednak dla przyzwoitości również je wymienię i opiszę:
 
 [Background.cpp](code/Background.cpp) - po prostu pobranie obrazu z pliku i funkcja wyświetlania go na ekranie,
+
 [Coin.cpp](code/Coin.cpp) - pobranie grafik, ruch monet, wywołanie zapętlonej animacji, spawn pieniążka w losowym miejscu na planszy,
+
 [Obstacle.cpp](code/Obstacle.cpp) - obwódka na ekranie oraz pobranie grafik platform,
+
 [Score.cpp](code/Score.cpp) - klasa głównie zajmująca się zarządzaniem punktami.
 
 [Inventory.cpp](code/Inventory.cpp), [Chest.cpp](code/Chest.cpp), [Item.cpp](code/Item.cpp) oraz część klasy [Score.cpp](code/Score.cpp) to moje eksperymenty nad tworzeniem i zarządzaniem ekwipunkiem, nie są to skończone klasy, ale postanowiłem ich nie usuwać, ponieważ rónież stanowią część całego projektu.
