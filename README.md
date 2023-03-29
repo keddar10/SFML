@@ -31,7 +31,7 @@ Pozostałe klasy są prostsze niż te wyżej wymienione, ale jednak dla przyzwoi
 
 [Score.cpp](code/Score.cpp) - klasa głównie zajmująca się zarządzaniem punktami.
 
-[Inventory.cpp](code/Inventory.cpp), [Chest.cpp](code/Chest.cpp), [Item.cpp](code/Item.cpp) oraz część klasy [Score.cpp](code/Score.cpp) to moje eksperymenty nad tworzeniem i zarządzaniem ekwipunkiem, nie są to skończone klasy, ale postanowiłem ich nie usuwać, ponieważ rónież stanowią część całego projektu.
+[Inventory.cpp](code/Inventory.cpp), [Chest.cpp](code/Chest.cpp), [Item.cpp](code/Item.cpp) oraz część klasy [Score.cpp](code/Score.cpp) to moje eksperymenty nad tworzeniem i zarządzaniem ekwipunkiem, nie są to skończone klasy, ale postanowiłem ich nie usuwać, ponieważ również stanowią część całego projektu.
 
 Poniżej screen z gry:
 ![Screen](./screen_z_projektu.jpg)
