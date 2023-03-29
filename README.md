@@ -1,7 +1,6 @@
-W tym repozytorium znajduje się wersja Release gry w sekcji Release z prawej strony strony głównej.
+W tym repozytorium znajduje się wersja Release gry w sekcji Release z prawej strony strony głównej, w folderze code natomiast znajdują się wszystkie pliki .h oraz .cpp, które są załączone do projektu, a na końcu opisu zamieszczony jest screen z gry.
 
-W folderze code natomiast znajdują się wszystkie pliki .h oraz .cpp, które są załączone do projektu.
-Jest ich całkiem sporo, dlatego pokrótce omówię te "większe i ciekawsze" z mojego punku widzenia.
+Plików zawierających kod jest całkiem sporo, dlatego pokrótce omówię te "większe i ciekawsze" z mojego punku widzenia.
 
 [Game.cpp](code/Game.cpp) oraz [SFML.cpp](code/SFML.cpp) - mimo, że nie są to najciekawsze pliki do przejrzenia, to właśnie tutaj wywoływane są funkcje pozwalające na granie. 
 W [Game.cpp](code/Game.cpp) tworzone są obiekty różnych klas (Player, Enemy, Booster, Item...) i w funkcji składowej tej klasy Loop() wywołwane są funkcje logiczne oraz te wizualne, pozwalające wyrysować obiekty na ekranie,
