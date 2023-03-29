@@ -1,4 +1,4 @@
-W tym repozytorium znajduje się wersja Release gry w sekcji Release.
+W tym repozytorium znajduje się wersja Release gry w sekcji Release z prawej strony strony głównej.
 
 W folderze code natomiast znajdują się wszystkie pliki .h oraz .cpp, które są załączone do projektu.
 Jest ich całkiem sporo, dlatego pokrótce omówię te "większe i ciekawsze" z mojego punku widzenia.
