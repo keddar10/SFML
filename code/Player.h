@@ -1,17 +1,18 @@
 #pragma once
-#include<SFML/Graphics.hpp>
-#include <sstream>
-#include <iostream>
-#include <vector>
 
-#include"Obstacle.h"
+
+#include <SFML/Graphics.hpp>
+
 #include "DEFINITIONS.h"
+
+#include "Obstacle.h"
 #include "Enemy.h"
 #include "Coin.h"
 #include "Score.h"
 #include "Inventory.h"
-//#include "Item.h"
 
+/* forward declarations */
+class Item;
 
 class Player : public Obstacle
 {
@@ -39,11 +40,16 @@ public:
 	void glowPlayer(bool);
 	void isInAir(bool);
 
+	void setPlayerTexturePosition();
+
 	void getPos();
 	void checkPosition();
 	void collisionWithObstacle(Obstacle *platform);
 	~Player();
 	void teleport();
+
+	void setAnimationLeft(float);
+	void setAnimationRight(float);
 
 	void drawScore(sf::RenderWindow &window);
 
@@ -61,20 +67,30 @@ protected:
 	float jumpHeight = 0.f;
 	float jumpRange = 190.f;
 
-	int itemCount = 0;
+	const float groungHeight = 600.f;
 
+	const float playerWidth = 30.f;
+	const float playerHeight = 50.f;
+	float movSpeed = 6.5f;
+	float boosterRatio = 1.6f;
+
+	int itemCount = 0;
+	int n = 0;
 	bool canJump = true;
 
-	float movSpeed = 6.5f;
 	sf::RectangleShape player;
 
 	sf::RectangleShape shell[NUMBER_OF_SHELL];
 
+	sf::Sprite playerSprite;
+	sf::Texture playerTexture;
+	//sf::Sprite playerSpriteTest;
+	//sf::Texture playerTextureTest;
 
 	sf::Clock timePassed;
+	sf::Clock animationClockPlayer;
 
 
-	float boosterRatio = 1.6f;
 
 //	sf::Event itemIsUsed;
 

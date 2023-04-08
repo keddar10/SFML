@@ -1,6 +1,9 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <iostream>
+
+
+#include <SFML/Graphics.hpp>
+
 
 class Coin
 {
@@ -22,6 +25,7 @@ private:
 	sf::Sprite coinSprite;
 
 	sf::Clock animationClock;
+	
 	
 	float coinCenterLine = 0.f;
 	int n = 0;

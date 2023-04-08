@@ -256,6 +256,7 @@ void Booster::accel(Player* object)
 		boosterActive = true;
 		
 	}
+	//object->setPlayerTexturePosition();
 
 	object->movementPlayer(boosterActive);
 

@@ -3,9 +3,12 @@
 #include <iostream>
 #include <sstream>
 #include "Inventory.h"
-#include "Player.h"
+// #include "Player.h"
 #include "Chest.h"
 //#include "Game.h"
+
+/* forward declarations */
+class Player;
 
 class Item
 {
@@ -21,7 +24,8 @@ public:
 	void grabItem(Player*, Score*, Inventory* );
 	void throwItem(/* Score*, */Inventory*/*, sf::Event&*/);
 
-	std::string getItemName();
+
+	std::string getItemName();//to przekazuje do wskaünika inventory w funkcji Item::addItem()!
 
 	//sf::RectangleShape getShape();
 
@@ -29,6 +33,9 @@ public:
 
 	bool itemColledted[5] = { false };
 
+	std::string strHealPotionS = "Heal Potion";
+	std::string strManaPotionS = "Mana Potion";
+	std::string strSpeedPotionS = "Speed Potion";
 private:
 	//float damage;
 	//float defence;
@@ -37,8 +44,9 @@ private:
 
 	int healValue = 10;
 	int manaValue = 10;
+	int speedValue = 10;
 	
-	std::vector <bool> itemCanBeUsed;
+	//std::vector <bool> itemCanBeUsed;
 
 	//int numberOfPotions = 0;
 	//sf::Font arial;
@@ -49,7 +57,6 @@ private:
 	sf::RectangleShape potionS;
 	sf::RectangleShape manaPotionS;
 
-	std::string strPotionS = "Heal Potion";
 	std::string nameOfItem;
 
 };

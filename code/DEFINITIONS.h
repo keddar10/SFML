@@ -13,3 +13,8 @@
 #define NUMBER_OF_COINS 2
 #define NUMBER_OF_CHESTS 2
 //#define NUMBER_OF_PLATFORMS 13
+
+struct Const final {
+	static inline constexpr int z = 100;
+};
+

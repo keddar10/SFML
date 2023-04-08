@@ -1,11 +1,14 @@
+#include <sstream>
+#include <iostream>
+#include <vector>
+
+
 #include "Player.h"
+
+
 //#include "Obstacle.h"
 
 //float jumpSpeed = 8.f;
-const float groungHeight = 600.f; 
-
-const float playerWidth = 30.f;
-const float playerHeight = 50.f;
 
 sf::Vector2f startPosition({ 150.f, 75.f });
 //wielkoœæ, kolor i punkt pocz¹tkowy gracza
@@ -14,7 +17,29 @@ Player::Player()
 	//sf::Color color(255, 20, 147);
 	player.setSize(sf::Vector2f({ playerWidth,playerHeight }));
 	player.setFillColor(sf::Color::Green);
+	
 	player.setPosition(sf::Vector2f({startPosition })); 
+
+	std::string spriteName;
+	spriteName = "obrazki/player/player30x50R_0.png";
+
+	if (!playerTexture.loadFromFile(spriteName))
+	{
+		player.setFillColor(sf::Color::Green);
+		std::cout << "nie udalo sie zaladwac obrazka " << spriteName << '\n';
+	}
+	float scaleX = playerWidth / 120.f;
+	float scaleY = playerHeight / 200.f;
+	playerSprite.setTexture(playerTexture);
+	playerSprite.setPosition(player.getPosition().x, player.getPosition().y);
+	playerSprite.setScale(scaleX,scaleY);
+	playerSprite.setScale(1.f,1.f);	
+	
+	//playerTextureTest.loadFromFile("obrazki/player/player30x50.png");
+	//playerSpriteTest.setTexture(playerTextureTest);
+	//playerSpriteTest.setPosition(player.getPosition().x+50.f, player.getPosition().y);
+	////playerSpriteTest.setScale(scaleX,scaleY);
+	//playerSpriteTest.setScale(4.f,4.f);
 } 
 
 Player::~Player()
@@ -22,6 +47,68 @@ Player::~Player()
 
 }
 
+void Player::setPlayerTexturePosition()
+{
+	playerSprite.setPosition(player.getPosition().x, player.getPosition().y);
+}
+
+void Player::setAnimationLeft(float speedRatio)
+{
+	sf::Time timePassedCoinAnimation = animationClockPlayer.getElapsedTime();
+	int changeFrameTime = static_cast<int>(150 / speedRatio);
+
+	std::string spriteName;
+	if (timePassedCoinAnimation.asMilliseconds() > changeFrameTime)
+	{
+		if (n > 1)
+		{
+			n = 0;
+		}
+		std::string path = "obrazki/player/player30x50L_";
+		std::string format = ".png";
+
+		std::string nToString = std::to_string(n);
+
+		spriteName = path + nToString + format;
+		n++;
+		if (!playerTexture.loadFromFile(spriteName))
+		{
+			player.setFillColor(sf::Color::Yellow);
+			std::cout << "nie udalo sie zaladwac obrazka playerLEFT" << '\n';
+		}
+		animationClockPlayer.restart();
+	}
+	playerSprite.setTexture(playerTexture);
+}
+
+void Player::setAnimationRight(float speedRatio)
+{
+	sf::Time timePassedCoinAnimation = animationClockPlayer.getElapsedTime();
+	int changeFrameTime = static_cast<int>(150/speedRatio);
+
+	std::string spriteName;
+	if (timePassedCoinAnimation.asMilliseconds() > changeFrameTime)
+	{
+		if (n > 1)
+		{
+			n = 0;
+		}
+		std::string path = "obrazki/player/player30x50R_";
+		std::string format = ".png";
+
+		std::string nToString = std::to_string(n);
+
+		spriteName = path + nToString + format;
+		n++;
+		if (!playerTexture.loadFromFile(spriteName))
+		{
+			player.setFillColor(sf::Color::Yellow);
+			std::cout << "nie udalo sie zaladwac obrazka playerRIGHT" << '\n';
+		}
+		animationClockPlayer.restart();
+	}
+	playerSprite.setTexture(playerTexture);
+}
 
 //tylko jak chce wy³¹czyæ skakanie
 void Player::movementPlayerNoGravity()
@@ -29,35 +116,45 @@ void Player::movementPlayerNoGravity()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 	{
 		player.move(-movSpeed, 0.f);
+		//playerSprite.move(-movSpeed, 0.f);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 	{
 
 		player.move(movSpeed, 0.f);
+		//playerSprite.move(movSpeed, 0.f);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
+		//playerSprite.move(0.f, movSpeed);
 		player.move(0.f, movSpeed);
 	}	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{
+		//playerSprite.move(0.f, -movSpeed);
 		player.move(0.f, -movSpeed);
 	}
 }
 
 void Player::movementPlayer(bool accelActive)
 {
+	setPlayerTexturePosition();
 	if (accelActive == false)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
+			setAnimationLeft(1.f);
 			player.move(-movSpeed, 0.f);
+			playerSprite.move(-movSpeed, 0.f);
+
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
+			setAnimationRight(1.f);
+			playerSprite.move(movSpeed, 0.f);
 			player.move(movSpeed, 0.f);
 		}
 
@@ -68,12 +165,16 @@ void Player::movementPlayer(bool accelActive)
 	{
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
+			setAnimationLeft(boosterRatio);
 			player.move(-boosterRatio*movSpeed, 0.f);
+			playerSprite.move(-boosterRatio*movSpeed, 0.f);
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
+			setAnimationRight(boosterRatio);
 			player.move(boosterRatio*movSpeed, 0.f);
+			playerSprite.move(boosterRatio*movSpeed, 0.f);
 		}		
 
 	}
@@ -86,7 +187,9 @@ void Player::drawTo(sf::RenderWindow& window)
 	{
 		window.draw(shell[i]);
 	}
-	window.draw(player); 
+	//window.draw(player); 
+	window.draw(playerSprite); 
+	//window.draw(playerSpriteTest); 
 }
 
 //wy³¹czam te metode w mainie, bo jej nie potrzebuje
@@ -95,6 +198,7 @@ void Player::moveDown(sf::Vector2f distance)
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
 	{
 		player.move(distance);
+		//playerSprite.move(distance);
 	}
 }
 
@@ -134,7 +238,7 @@ void Player::isInAir(bool jumping)
 void Player::gravity(Obstacle* platform)
 {
 	sf::Time sec = timePassed.getElapsedTime();
-	float fallVelocity = V0_FALL_SPEED + FALL_SPEED * sec.asMilliseconds()/2000;
+	float fallVelocity = static_cast<float>(V0_FALL_SPEED + FALL_SPEED * sec.asMilliseconds()/2000);
 	if ((sf::Keyboard::isKeyPressed(sf::Keyboard::Up) == false || canJump == false) && player.getGlobalBounds().top + playerHeight < platform->posYMin())
 	{
 		player.move(0.f, fallVelocity);
@@ -299,10 +403,10 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 			inventory->deleteItem();
 
 		}
-		else
-		{
-			std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
-		}
+		//else
+		//{
+		//	std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
+		//}
 	}
 }
 

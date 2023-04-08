@@ -1,10 +1,12 @@
 #include "Item.h"
 
+#include "Player.h"
+
 Item::Item(std::string itemDestination, int size)
 {
 	if (itemDestination == "heal" /*&& size == 1*/)
 	{
-		nameOfItem = strPotionS;
+		nameOfItem = strHealPotionS;
 		healValue = size * healValue;
 		//std::cout <<"healValue: "<< healValue << '\n';
 
@@ -14,12 +16,21 @@ Item::Item(std::string itemDestination, int size)
 	}
 	else if (itemDestination == "mana")
 	{
-		nameOfItem = "Mana potion";
+		nameOfItem = strManaPotionS;
 		manaValue = size * manaValue;
 
 		potionS.setSize({ 25.f, 25.f });
 		potionS.setFillColor(sf::Color::Blue);
 		potionS.setPosition(size * 120.f, size * 120.f);
+	}
+	else if (itemDestination == "speed")
+	{
+		nameOfItem = strSpeedPotionS;
+		speedValue = size * speedValue;
+
+		potionS.setSize({ 17.f, 17.f });
+		potionS.setFillColor(sf::Color::Yellow);
+		potionS.setPosition(size * 120.f, 550.f);
 	}
 	else
 	{
@@ -68,12 +79,13 @@ void Item::grabItem(Player* object, Score* potionVis, Inventory* inventory)
 
 	if (object->getShape().getGlobalBounds().intersects(potionS.getGlobalBounds()))
 	{
-		//std::cout << "Item::grabItem zebrano: " << strPotionS << '\n';
+		//std::cout << "Item::grabItem zebrano: " << getItemName() << '\n';
 		potionS.setPosition(-50.f, -50.f);
 		itemColledted[0] = true;
 		object->getItem(potionS);
 		potionVis->getPotion();
 		inventory->addItem(getItemName());
+		
 	}
 }
 

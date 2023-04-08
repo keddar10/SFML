@@ -33,13 +33,14 @@ public:
 	void Loop();
 
 
-	static inline constexpr std::uint8_t NUMBER_OF_PLATFORMS = 14;//
-	static inline constexpr std::uint8_t NUMBER_OF_ITEMS = 6;
+	static inline constexpr std::uint8_t NUMBER_OF_PLATFORMS = 14;//constexprt znaczy ze to jest sta³a w momencie kompilacji i jest tak sta³a ¿e ojeja, static to jest ¿e jak kompilator 
+	//se kompiluje to ta zmienna nie jest powuiazana z obiektem tlyko z klaas, nie opitrzebuje do neij obiektu klasy Game tylko ona jest w tej klasie
+	static inline constexpr std::uint8_t NUMBER_OF_ITEMS = 11;
 private:
 	
 	sf::RenderWindow* window;
 	Player* player;
-	
+	//std::unique_ptr<Player> player; to tomek mi coœ napisa³ ¿e nie trzeba robuiæ delete po new, ani new nawet 
 	Obstacle* platform[NUMBER_OF_PLATFORMS];
 	Obstacle* boundary;
 	Obstacle* ground;

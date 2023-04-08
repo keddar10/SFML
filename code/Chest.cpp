@@ -35,11 +35,14 @@ void Chest::content(int i)
 
 bool Chest::wasOpened(int i)
 {
+	/*
 	if (chestOpened[i] == true)
 	{
 		//std::cout << "wasOpenedChest: " << i << '\n';
 		return true;
 	}
+	*/
+	return chestOpened[i];
 }
 
 

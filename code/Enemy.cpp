@@ -119,13 +119,11 @@ void Enemy::moveEnemy(int i, bool slowerActive)
 
 void Enemy::spawnEnemy(int i)
 {
-	
 	std::random_device startPos;
-	std::uniform_real_distribution<float> rangeX(200.f, 1280.f - enemy[i].getSize().x);
+	std::uniform_real_distribution<float> rangeX(200.f, WINDOW_WIDTH - enemy[i].getSize().x);
 	std::uniform_real_distribution<float> rangeY(100.f, GROUND_HEIGHT - enemy[i].getSize().y);
 
 	enemy[i].setPosition(rangeX(startPos), rangeY(startPos));
-	
 }
 
 bool Enemy::enemyCanBeSpawned(int digit)

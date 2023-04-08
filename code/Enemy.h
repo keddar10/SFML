@@ -50,8 +50,8 @@ protected:
 
 	uint8_t slowRatio = 2;
 
-	float movX[NUMBER_OF_ENEMIES] = { *ptrEnemyMovSpeed , *ptrEnemyMovSpeed };
-	float movY[NUMBER_OF_ENEMIES] = { *ptrEnemyMovSpeed , *ptrEnemyMovSpeed };	
+	float movX[NUMBER_OF_ENEMIES] = { *ptrEnemyMovSpeed+3 , *ptrEnemyMovSpeed-1 };
+	float movY[NUMBER_OF_ENEMIES] = { *ptrEnemyMovSpeed+1 , *ptrEnemyMovSpeed+2 };	
 
 	//TODO zrobiæ funkcje do zmiany predkoœci emeny poprzez referencje nie do enemyMovSpeed tylko bezpoœrednie do movX[0] lub [1]? 
 	

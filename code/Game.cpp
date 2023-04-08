@@ -3,7 +3,7 @@
 #include <memory>
 
 //sterowanie:
-//strzaï¿½ki - ruch
+//strza³ki - ruch
 //X otworz skrzynie
 //Z get position
 //C use item
@@ -15,14 +15,14 @@ Game::Game()
     player = new Player();
 
 
-
+    //player = std::make_unique<Player>(); w nag³owku jest kom
 	enemy[0] = new Enemy({40,40}, /*{620.f,110.f},*/ 0);
 	enemy[1] = new Enemy({70,70}, /*{700.f,300.f},*/ 1);
     
 	boundary = new Obstacle();
     ground = new Obstacle({ GROUND_HEIGHT });
 
-    //Platformy - dï¿½ugoï¿½ï¿½ musi byï¿½ wielokrotnoï¿½ciï¿½ 10!
+    //Platformy - d³ugoœæ musi byæ wielokrotnoœci¹ 10!
 	platform[0] = new Obstacle({ 340.f, 430.f}, 160.f);
     platform[1] = new Obstacle({ 100.f,500.f }, 170.f);
     platform[2] = new Obstacle({ 170.f, 370.f }, 100.f);
@@ -69,6 +69,10 @@ Game::Game()
     item[3] = new Item("mana", 1);
     item[4] = new Item("mana", 2);
     item[5] = new Item("mana", 3);
+    for (int i = 6; i < 11; i++)
+    {
+        item[i] = new Item("speed", i - 6);
+    }
 	
     //inventory
     inventory = new Inventory();
@@ -100,7 +104,7 @@ void Game::Loop()
         {
             player->collisionWithObstacle(platform[i]);
         }
-
+       
         player->collisionWithObstacle(ground);
         player->jump();
         player->gravity(ground);
@@ -111,6 +115,7 @@ void Game::Loop()
         destroyer->spawnDestroyer();
         slower->spawnSlower();
         friendly->spawnFriendly();
+
         
 
 
@@ -154,12 +159,12 @@ void Game::Loop()
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z))
                 player->getPos();
 
-            
+            //player events
             player->useItem( scoreVis, scoreVis, inventory, event);
             
-
+            //inventory events
             inventory->showInv(event);
-
+            inventory->selectItem(event);
 
         }
 
@@ -196,7 +201,7 @@ void Game::Loop()
         
 
         window->clear();
-         background->drawTo(*window);//zawsze na poczï¿½tku ma siï¿½ renderowaï¿½! musi byï¿½ "pod spodem"
+         background->drawTo(*window);//zawsze na pocz¹tku ma siê renderowaæ! musi byæ "pod spodem"
 
         for (int i = 0; i <= 1; i++)
             enemy[i]->drawEnemy(*window, i);

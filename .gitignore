@@ -1,0 +1,8 @@
+*.dll
+*.zip
+arial.ttf
+.vs/
+Debug/
+Release/
+obrazki/
+zapis fpsow/
