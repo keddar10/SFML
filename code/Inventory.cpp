@@ -146,22 +146,7 @@ unsigned int Inventory::getItemSlot(int counter)
 	//std::cout << "getItemSlot int counter: " << intVec[counter] << '\n';
 	return intVec[counter];
 }
-//
-//void Inventory::deleteItem()//TODO naprawic delete item xd + wybraæ ktory item uzywam 
-//{
-//	
-//	itemAmount--;
-//	if (itemSlot != 0)
-//	{
-//		itemSlot--;
-//	}
-//	arial.loadFromFile("arial.ttf");
-//	showedItem[itemAmount].str("");//dzia³a doraŸnie, bo nie mamy rozró¿nienia itemów póki co
-//	//for (int i = itemAmount; i == i-1; i--)
-//	//{
-//	//	showedItem[i].str("");
-//	//}
-//}
+
 void Inventory::deleteItem()//TODO naprawic delete item xd + wybraæ ktory item uzywam 
 {
 	//TODO itemCount i strVec nie dziala w taki sam sposób

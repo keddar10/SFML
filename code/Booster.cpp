@@ -249,11 +249,11 @@ void Booster::accel(Player* object)
 	showTime("Accelerator", cooldownAccelerator, time, sf::Vector2f (600.f,620.f));
 	if (object->getShape().getGlobalBounds().intersects(booster.getGlobalBounds()))
 	{
-		booster.setPosition(-50.f, -50.f);
 		timePassed.restart();
+		boosterActive = true;
+		booster.setPosition(-50.f, -50.f);
 		respawnTimeAcc.restart();
 		boosterCanBeSpawned[0] = true;
-		boosterActive = true;
 		
 	}
 	//object->setPlayerTexturePosition();
