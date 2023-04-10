@@ -7,6 +7,8 @@
 //X otworz skrzynie
 //Z get position
 //C use item
+//I show eq
+//J next item in eq
 Game::Game()
 {
 	window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BITS_PER_PIXEL), "Game");
