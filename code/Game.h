@@ -18,8 +18,10 @@
 #include "Enemy.h"
 #include "Interactive.h"
 #include "Inventory.h"
-#include "Player.h"
 #include "Item.h"
+#include "Item2.h"
+#include "Player.h"
+#include "PotionHP.h"
 #include "Obstacle.h"
 #include "Score.h"
 
@@ -59,6 +61,7 @@ private:
 	Chest* chest[NUMBER_OF_CHESTS];
 	Item* item[NUMBER_OF_ITEMS];
 	Inventory* inventory;
+	PotionHP* potionHP;
 	//Player* shell;
 
 	//Booster* timeVis;

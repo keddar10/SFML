@@ -393,7 +393,7 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 {
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::C)
 	{
-		if (itemCount>0 )
+		if (itemCount>0 && inventory->getSwitchInv())
 		{
 			//std::cout << "Player::useItem() is called" << '\n';
 			itemCount--;

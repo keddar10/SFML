@@ -124,6 +124,7 @@ void Inventory::setItemSlot(std::string itemNameset, int positionInEq)
 {
 	strVec.push_back(itemNameset);
 	intVec.push_back(positionInEq);
+	//moze przekaze tutaj inreaseItemCount? 
 	//std::cout << "Inventory::setItemSlot NAME= " << itemNameset << " POSITION = " << positionInEq << '\n';
 }
 
@@ -150,7 +151,9 @@ unsigned int Inventory::getItemSlot(int counter)
 void Inventory::deleteItem()//TODO naprawic delete item xd + wybraæ ktory item uzywam 
 {
 	//TODO itemCount i strVec nie dziala w taki sam sposób
-	if (itemCount[itemSelector] > 0)
+	//resetItemSelector();
+	//musze przekazaæ tutaj dok³adnie który item zu¿ywam! a nie w zale¿noœci od itemSelector! tzn w zale¿noœci od niego, ale inaczej xD
+	if (switchInv  && itemCount[itemSelector] > 0)
 	{
 		std::cout << '\n';
 		std::cout << "deleteItem(): item used int: " << intVec[itemSelector -1 ] << '\n';
@@ -180,7 +183,8 @@ void Inventory::selectItem(sf::Event& eventCalled)
 		std::cout << "selectItem(): " << itemSelector<<'\n';
 		std::cout << "selectItem(): selected item str:" << strVec[itemSelector-1] << '\n';
 		std::cout << "selectItem(): selected item int:" << intVec[itemSelector-1] << '\n';
-		std::cout << "selectItem(): selected item itemCount:" << itemCount[itemSelector-1] << '\n';
+		std::cout << "selectItem(): selected item itemCount:" << itemCount[itemSelector-1] << '\n';//nie itemCount, bo itemCount przechowuje STA£E po³o¿enia elementów, MP zawsze jest [1], 
+		//a jak zbiorê go pierwszego to wyœwietlam tutaj itemCoumt [0], bo itemSelector = 1 
 		
 		inventoryIndex.setPosition(inventoryIndex.getPosition().x, static_cast<float>(/*getItemSlot(itemSelector) **/((itemSelector+1) * itemPositionInInventory)-characterSize/2));
 		//getItemSlot(0);
@@ -189,13 +193,18 @@ void Inventory::selectItem(sf::Event& eventCalled)
 	}	
 }
 
-std::string Inventory::getItemCount(int i)//zamiana itemCount na string
+std::string Inventory::getItemCountInString(int i)//zamiana itemCount na string
 {
 	std::stringstream castedItemCount;
 	castedItemCount << itemCount[i];
 	std::string returnedString = castedItemCount.str();
 	
 	return returnedString;
+}
+
+int Inventory::getItemCountInInt(std::string nameOfItem)
+{
+	return 0;
 }
 
 //int Inventory::increaseItemCount(int i, int value)
@@ -208,20 +217,26 @@ int Inventory::increaseItemCount(std::string nameOfItem)
 	if (nameOfItem == "Heal Potion")//najpierw ++ a potem return ¿eby ³atwiej wyœwietlaæ w konsoli, póŸniej mo¿na zmieniæ na return ++itemCount[...]
 	{
 		++itemCount[0];
-		//std::cout << "HPgetItemCOunt string: " << getItemCount(0) << '\n';
+		//std::cout << "HPgetItemCOunt string: " << getItemCountInString(0) << '\n';
 		return itemCount[0];
 	}
 	else if (nameOfItem == "Mana Potion")
 	{
 		++itemCount[1];
-		//std::cout << "MPgetItemCOunt string: " << getItemCount(1) << '\n';
+		std::cout << "increaseItemCount MP getItemCOunt string: " << getItemCountInString(1) << '\n';
+		std::cout << "increaseItemCount MP itemCount[1]" << itemCount[1] << '\n';
 		return itemCount[1];
 	}
 	else if (nameOfItem == "Speed Potion")
 	{
-		//++itemCount[2];
-		//std::cout << "SPgetItemCOunt string: " << getItemCount(2) << '\n';
-		return ++itemCount[2];
+		++itemCount[2];
+		//std::cout << "SPgetItemCOunt string: " << getItemCountInString(2) << '\n';
+		return itemCount[2];
 	}
 	return 0;
+}
+
+bool Inventory::getSwitchInv()
+{
+	return switchInv;
 }

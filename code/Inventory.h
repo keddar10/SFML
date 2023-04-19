@@ -19,16 +19,18 @@ public:
 	void addItem(std::string);
 	void deleteItem();
 	bool isItemNameUnique(/*std::string [],*/ int);
-	//int getItemCount(int);
-	std::string getItemCount(int);
+	//int getItemCountInString(int);
+	std::string getItemCountInString(int);
 	//int increaseItemCount(int, int);
 	int increaseItemCount(std::string);
 
 	void setItemSlot(std::string, int);
 	unsigned int getItemSlot(std::string);
 	unsigned int getItemSlot(int);
-
+	bool getSwitchInv();
 	void resetItemSelector();
+
+	int getItemCountInInt(std::string);
 
 	void selectItem(sf::Event&);
 

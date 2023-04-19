@@ -76,8 +76,12 @@ Game::Game()
         item[i] = new Item("speed", i - 6);
     }
 	
+    potionHP = new PotionHP(sf::Vector2f{ 200.f, 200.f });
+
     //inventory
     inventory = new Inventory();
+
+
 }
 
 
@@ -233,6 +237,7 @@ void Game::Loop()
         {
             item[i]->drawItem(*window);
         }
+        potionHP->drawItem(*window, potionHP->getShape());
 
         player->drawTo(*window);
         inventory->drawInv(*window);
