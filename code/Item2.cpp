@@ -16,14 +16,20 @@ Item2::~Item2()
 
 }
 
-void Item2::spawnItem(sf::RectangleShape& spawnedItem)
+void Item2::spawnItem(sf::RectangleShape& spawnedItem, sf::Vector2f startPosition)
 {
-	
+
+	spawnedItem.setPosition(startPosition);
 }
 
-void Item2::collectItem(sf::RectangleShape&)
+void Item2::collectItem(sf::RectangleShape* collectedItem, Player* player, Inventory* inventory)//TODO ?
 {
-
+	if (player->getShape().getGlobalBounds().intersects(collectedItem->getGlobalBounds()))
+	{
+		collectedItem->setPosition(-200.f, -200.f);
+		std::cout << "Item2::collectItem" << '\n';
+		//inventory->addItem("jakis item");
+	}
 }
 
 void Item2::deleteItem(sf::RectangleShape& deletedItem)

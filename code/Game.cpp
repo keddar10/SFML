@@ -65,18 +65,18 @@ Game::Game()
     chest[0] = new Chest({ 200.f, 600.f-45.f}, 0);
 
     //items
-    item[0] = new Item("heal", 1);
-    item[1] = new Item("heal", 2);
-    item[2] = new Item("heal", 3);
-    item[3] = new Item("mana", 1);
-    item[4] = new Item("mana", 2);
-    item[5] = new Item("mana", 3);
-    for (int i = 6; i < 11; i++)
-    {
-        item[i] = new Item("speed", i - 6);
-    }
+    //item[0] = new Item("heal", 1);
+    //item[1] = new Item("heal", 2);
+    //item[2] = new Item("heal", 3);
+    //item[3] = new Item("mana", 1);
+    //item[4] = new Item("mana", 2);
+    //item[5] = new Item("mana", 3);
+    //for (int i = 6; i < 11; i++)
+    //{
+    //    item[i] = new Item("speed", i - 6);
+    //}
 	
-    potionHP = new PotionHP(sf::Vector2f{ 200.f, 200.f });
+    potionHP = new PotionHP(sf::Vector2f( 280.f, 240.f ));
 
     //inventory
     inventory = new Inventory();
@@ -123,7 +123,7 @@ void Game::Loop()
         friendly->spawnFriendly();
 
         
-
+        potionHP->collectItem(potionHP->getShapePtr(), player, inventory);//TODO ?
 
         //boosters functions
         //acceleration
@@ -148,11 +148,11 @@ void Game::Loop()
         }
 
         //item 
-        for (int i = 0; i<NUMBER_OF_ITEMS;i++)
-        {
-            item[i]->spawnItem(chest[0], 0);
-            item[i]->grabItem(player, scoreVis, inventory);
-        }
+        //for (int i = 0; i<NUMBER_OF_ITEMS;i++)
+        //{
+        //    item[i]->spawnItem(chest[0], 0);
+        //    item[i]->grabItem(player, scoreVis, inventory);
+        //}
         
 
         while (window->pollEvent(event))
@@ -233,10 +233,10 @@ void Game::Loop()
         shot->drawBooster(*window);
 
         chest[0]->drawChest(*window, 0);
-        for (int i = 0; i<NUMBER_OF_ITEMS; i++)
-        {
-            item[i]->drawItem(*window);
-        }
+        //for (int i = 0; i<NUMBER_OF_ITEMS; i++)
+        //{
+        //    item[i]->drawItem(*window);
+        //}
         potionHP->drawItem(*window, potionHP->getShape());
 
         player->drawTo(*window);

@@ -59,7 +59,7 @@ private:
 	Booster* shot;
 	Background* background;
 	Chest* chest[NUMBER_OF_CHESTS];
-	Item* item[NUMBER_OF_ITEMS];
+	//Item* item[NUMBER_OF_ITEMS];
 	Inventory* inventory;
 	PotionHP* potionHP;
 	//Player* shell;

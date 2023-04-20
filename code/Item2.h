@@ -2,7 +2,11 @@
 
 #include <iostream>
 #include <sstream>
+
 #include <SFML\Graphics.hpp>
+
+#include "Inventory.h"
+#include "Player.h"
 
 class Item2
 {
@@ -11,8 +15,8 @@ public:
 	Item2(sf::RectangleShape);
 	~Item2();
 
-	void spawnItem(sf::RectangleShape&);
-	void collectItem(sf::RectangleShape&);
+	void spawnItem(sf::RectangleShape&, sf::Vector2f);
+	void collectItem(sf::RectangleShape*, Player* , Inventory* );
 	void deleteItem(sf::RectangleShape&);
 	void drawItem(sf::RenderWindow&, sf::RectangleShape);
 	

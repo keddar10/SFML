@@ -10,7 +10,10 @@ public:
 	PotionHP();
 	PotionHP(sf::Vector2f);
 	~PotionHP();
+	sf::RectangleShape* getShapePtr();
 	sf::RectangleShape getShape();
+	std::string getItemName();
+
 	
 
 protected:

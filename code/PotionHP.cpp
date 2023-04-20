@@ -1,6 +1,6 @@
 #include "PotionHP.h"
 
-PotionHP::PotionHP() : Item2::Item2(potionHP)
+PotionHP::PotionHP() 
 {
 
 }
@@ -11,8 +11,8 @@ PotionHP::PotionHP(sf::Vector2f (startPosition))
 	itemName = "Hp potionItem2";
 	potionHP.setSize(defaultSize);
 	potionHP.setFillColor(defaultColor);
-	std::cout <<"potionHP itemName: " << itemName << '\n' << "potionHP.getposition().x " << potionHP.getPosition().x << '\n' << "potionHP.getsize().x " << potionHP.getSize().x << '\n';
-
+	std::cout <<"potionHP itemName: " << itemName << '\n' << "potionHP.getsize().x " << potionHP.getSize().x << '\n';
+	spawnItem(potionHP, startPosition);
 }
 
 PotionHP::~PotionHP()
@@ -23,4 +23,15 @@ PotionHP::~PotionHP()
 sf::RectangleShape PotionHP::getShape()
 {
 	return potionHP;
+}
+
+sf::RectangleShape* PotionHP::getShapePtr()
+{
+	sf::RectangleShape* foo = &potionHP; //TODO ?
+	return foo;
+}
+
+std::string PotionHP::getItemName()
+{
+	return itemName;
 }
