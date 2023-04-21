@@ -19,6 +19,8 @@ public:
 	void collectItem(sf::RectangleShape*, Player* , Inventory* );
 	void deleteItem(sf::RectangleShape&);
 	void drawItem(sf::RenderWindow&, sf::RectangleShape);
+
+	std::string getItemName();
 	
 
 

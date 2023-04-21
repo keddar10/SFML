@@ -38,6 +38,7 @@ public:
 	static inline constexpr std::uint8_t NUMBER_OF_PLATFORMS = 14;//constexprt znaczy ze to jest sta³a w momencie kompilacji i jest tak sta³a ¿e ojeja, static to jest ¿e jak kompilator 
 	//se kompiluje to ta zmienna nie jest powuiazana z obiektem tlyko z klaas, nie opitrzebuje do neij obiektu klasy Game tylko ona jest w tej klasie
 	static inline constexpr std::uint8_t NUMBER_OF_ITEMS = 11;
+	static inline constexpr std::uint8_t NUMBER_OF_HP_POTIONS = 3;
 private:
 	
 	sf::RenderWindow* window;
@@ -61,7 +62,7 @@ private:
 	Chest* chest[NUMBER_OF_CHESTS];
 	//Item* item[NUMBER_OF_ITEMS];
 	Inventory* inventory;
-	PotionHP* potionHP;
+	PotionHP* potionHP[NUMBER_OF_HP_POTIONS];
 	//Player* shell;
 
 	//Booster* timeVis;

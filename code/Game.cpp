@@ -75,8 +75,11 @@ Game::Game()
     //{
     //    item[i] = new Item("speed", i - 6);
     //}
-	
-    potionHP = new PotionHP(sf::Vector2f( 280.f, 240.f ));
+	for (int i = 0;i<NUMBER_OF_HP_POTIONS;i++)
+    {
+        potionHP[i] = new PotionHP(sf::Vector2f(280.f+i*40.f, 240.f));
+    }
+   
 
     //inventory
     inventory = new Inventory();
@@ -122,8 +125,10 @@ void Game::Loop()
         slower->spawnSlower();
         friendly->spawnFriendly();
 
-        
-        potionHP->collectItem(potionHP->getShapePtr(), player, inventory);//TODO ?
+        for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
+        {
+            potionHP[i]->collectItem(potionHP[i]->getShapePtr(), player, inventory);//TODO ?
+        }
 
         //boosters functions
         //acceleration
@@ -205,7 +210,7 @@ void Game::Loop()
         //chest logic
         chest[0]->action(player, 0);
         
-
+        //window display
         window->clear();
          background->drawTo(*window);//zawsze na pocz¹tku ma siê renderowaæ! musi byæ "pod spodem"
 
@@ -237,7 +242,10 @@ void Game::Loop()
         //{
         //    item[i]->drawItem(*window);
         //}
-        potionHP->drawItem(*window, potionHP->getShape());
+        for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
+        {
+            potionHP[i]->drawItem(*window, potionHP[i]->getShape());
+        }
 
         player->drawTo(*window);
         inventory->drawInv(*window);

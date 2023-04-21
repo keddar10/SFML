@@ -13,6 +13,7 @@ public:
 	sf::RectangleShape* getShapePtr();
 	sf::RectangleShape getShape();
 	std::string getItemName();
+	void effect();
 
 	
 
