@@ -95,7 +95,7 @@ void Inventory::addItem(std::string itemName)
 	
 	if (isItemNameUnique(itemAmount) == false)
 	{
-		std::cout << "isItemNameUnique false" << '\n';
+		//std::cout << "isItemNameUnique false" << '\n';
 		
 		showedCounter[getItemSlot(itemName) - 1].str("");//zerowanie stringa
 		showedCounter[getItemSlot(itemName)-1] <<"x"<< increaseItemCount(itemName);
@@ -108,12 +108,14 @@ void Inventory::addItem(std::string itemName)
 	else
 	{
 		increaseItemCount(itemName);
+		itemCount[itemSlot]++;//tylko zeby ilosc wyswietlana sie zgadzala
 		itemSlot++;
 		itemVis[itemAmount].setFont(arial);
 		itemVis[itemAmount].setPosition(invVis.getPosition().x, static_cast<float>((itemSlot)*itemPositionInInventory));
 		itemVis[itemAmount].setCharacterSize(characterSize);
 		itemVis[itemAmount].setString(showedItem[itemAmount].str());
 		setItemSlot(itemName, itemSlot);
+		
 		itemAmount++;
 	}
 }
@@ -151,6 +153,7 @@ unsigned int Inventory::getItemSlot(int counter)
 void Inventory::deleteItem()//TODO naprawic delete item xd + wybraæ ktory item uzywam 
 {
 	//TODO itemCount i strVec nie dziala w taki sam sposób
+	//TODO na nowo podjac sie usuwania/uzywania itemow
 	//resetItemSelector();
 	//musze przekazaæ tutaj dok³adnie który item zu¿ywam! a nie w zale¿noœci od itemSelector! tzn w zale¿noœci od niego, ale inaczej xD
 	if (switchInv  && itemCount[itemSelector] > 0)
@@ -213,27 +216,40 @@ int Inventory::getItemCountInInt(std::string nameOfItem)
 //}
 
 int Inventory::increaseItemCount(std::string nameOfItem)
-{
-	if (nameOfItem == "Heal Potion")//najpierw ++ a potem return ¿eby ³atwiej wyœwietlaæ w konsoli, póŸniej mo¿na zmieniæ na return ++itemCount[...]
+{	
+	if (std::find(strVec.begin(), strVec.end(), nameOfItem) != strVec.end())
 	{
-		++itemCount[0];
-		//std::cout << "HPgetItemCOunt string: " << getItemCountInString(0) << '\n';
-		return itemCount[0];
+		std::cout << "Inventory::increaseItemCOunt znalazlem item: " << nameOfItem << '\n';
+		auto it = find(strVec.begin(), strVec.end(), nameOfItem);
+		int index = it - strVec.begin();
+		std::cout << "pozycja: " << nameOfItem << " = " << index << '\n';
+		return ++itemCount[index];
 	}
-	else if (nameOfItem == "Mana Potion")
-	{
-		++itemCount[1];
-		std::cout << "increaseItemCount MP getItemCOunt string: " << getItemCountInString(1) << '\n';
-		std::cout << "increaseItemCount MP itemCount[1]" << itemCount[1] << '\n';
-		return itemCount[1];
-	}
-	else if (nameOfItem == "Speed Potion")
-	{
-		++itemCount[2];
-		//std::cout << "SPgetItemCOunt string: " << getItemCountInString(2) << '\n';
-		return itemCount[2];
-	}
+
+
+
+
+	//else if (nameOfItem == "Heal Potion")//najpierw ++ a potem return ¿eby ³atwiej wyœwietlaæ w konsoli, póŸniej mo¿na zmieniæ na return ++itemCount[...]
+	//{
+	//	++itemCount[0];
+	//	//std::cout << "HPgetItemCOunt string: " << getItemCountInString(0) << '\n';
+	//	return itemCount[0];
+	//}
+	//else if (nameOfItem == "Mana Potion")
+	//{
+	//	++itemCount[1];
+	//	std::cout << "increaseItemCount MP getItemCOunt string: " << getItemCountInString(1) << '\n';
+	//	std::cout << "increaseItemCount MP itemCount[1]" << itemCount[1] << '\n';
+	//	return itemCount[1];
+	//}
+	//else if (nameOfItem == "Speed Potion")
+	//{
+	//	++itemCount[2];
+	//	//std::cout << "SPgetItemCOunt string: " << getItemCountInString(2) << '\n';
+	//	return itemCount[2];
+	//}
 	return 0;
+
 }
 
 bool Inventory::getSwitchInv()

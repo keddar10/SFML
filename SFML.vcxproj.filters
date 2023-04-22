@@ -57,10 +57,13 @@
     <ClInclude Include="code\Score.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Item2.h">
+    <ClInclude Include="code\Item2.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="PotionHP.h">
+    <ClInclude Include="code\PotionHP.h">
+      <Filter>Pliki nagłówkowe</Filter>
+    </ClInclude>
+    <ClInclude Include="code\PotionMP.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,10 +110,13 @@
     <ClCompile Include="code\SFML.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="Item2.cpp">
+    <ClCompile Include="code\Item2.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
-    <ClCompile Include="PotionHP.cpp">
+    <ClCompile Include="code\PotionHP.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="code\PotionMP.cpp">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
   </ItemGroup>

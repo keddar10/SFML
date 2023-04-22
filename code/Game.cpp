@@ -9,6 +9,7 @@
 //C use item
 //I show eq
 //J next item in eq
+
 Game::Game()
 {
 	window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT, BITS_PER_PIXEL), "Game");
@@ -75,9 +76,15 @@ Game::Game()
     //{
     //    item[i] = new Item("speed", i - 6);
     //}
+
 	for (int i = 0;i<NUMBER_OF_HP_POTIONS;i++)
     {
         potionHP[i] = new PotionHP(sf::Vector2f(280.f+i*40.f, 240.f));
+    }
+
+	for (int i = 0;i<2;i++)
+    {
+        potionMP[i] = new PotionMP(sf::Vector2f(500.f+i*40.f, 240.f));
     }
    
 
@@ -125,9 +132,21 @@ void Game::Loop()
         slower->spawnSlower();
         friendly->spawnFriendly();
 
+        //for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
+        //{
+        //    potionHP[i]->collectItem(potionHP[i]->getShapePtr(), player, inventory);//TODO ?
+        //}
+        //for (int i = 0; i<NUMBER_OF_MP_POTIONS;i++)
+        //{
+        //    potionMP[i]->collectItem(potionMP[i]->getShapePtr(), player, inventory);//TODO ?
+        //}
         for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
         {
-            potionHP[i]->collectItem(potionHP[i]->getShapePtr(), player, inventory);//TODO ?
+            potionHP[i]->addItem(player, inventory);//TODO ?
+        }
+        for (int i = 0; i<NUMBER_OF_MP_POTIONS;i++)
+        {
+            potionMP[i]->addItem( player, inventory);//TODO ?
         }
 
         //boosters functions
@@ -242,9 +261,14 @@ void Game::Loop()
         //{
         //    item[i]->drawItem(*window);
         //}
+
         for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
         {
             potionHP[i]->drawItem(*window, potionHP[i]->getShape());
+        }
+        for (int i = 0; i<NUMBER_OF_MP_POTIONS;i++)
+        {
+            potionMP[i]->drawItem(*window, potionMP[i]->getShape());
         }
 
         player->drawTo(*window);

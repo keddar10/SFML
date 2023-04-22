@@ -4,24 +4,23 @@
 #include <sstream>
 #include "Item2.h"
 
-class PotionHP : public Item2
+class PotionMP : public Item2
 {
 public:
-	PotionHP();
-	PotionHP(sf::Vector2f);
-	~PotionHP();
+	PotionMP();
+	PotionMP(sf::Vector2f);
+	~PotionMP();
 	sf::RectangleShape* getShapePtr();
 	sf::RectangleShape getShape();
 	std::string getItemName();
-	void useEffect();
-	void addItem( Player* player, Inventory* inventory);
+	void effect();
+	void addItem(Player*, Inventory*);
 
 	int setItemAmount();
 	void getItemAmount();
 
 protected:
-	int healValue = 10;
-	sf::RectangleShape potionHP;
-private:
+	int manaValue = 10;
+	sf::RectangleShape potionMP;
 	int itemAmount = 0;
 };

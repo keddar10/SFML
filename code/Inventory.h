@@ -3,6 +3,9 @@
 #include <iostream>
 #include "DEFINITIONS.h"
 //#include "Player.h"
+//#include <Bits.h>
+
+#include <algorithm>
 #include <sstream>
 #include <vector>
 
@@ -43,7 +46,7 @@ private:
 	
 
 
-	uint8_t slots = 10;
+	//uint8_t slots = 10;
 
 	sf::RectangleShape inventoryBackground;
 	sf::RectangleShape inventoryIndex;
@@ -62,7 +65,7 @@ private:
 
 	int itemAmount = 0;
 	int itemSlot = 0;
-	int itemCount[maxItemAmount] = { 0 };//wszystkie elementy tablicy s¹ równe 0, 0 element = healPotion, 1 element = manaPotion, 2 element = speedPotion
+	int itemCount[maxItemAmount] = { 0 };//wszystkie elementy tablicy s¹ równe 0
 	int itemSelector = 1;
 	int characterSize = 25;//to bym mogl dac globalnie nawet w definitions moze?
 	sf::Font arial;

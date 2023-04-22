@@ -156,6 +156,7 @@
     <ClInclude Include="code\Obstacle.h" />
     <ClInclude Include="code\Player.h" />
     <ClInclude Include="code\PotionHP.h" />
+    <ClInclude Include="code\PotionMP.h" />
     <ClInclude Include="code\Score.h" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +174,7 @@
     <ClCompile Include="code\Obstacle.cpp" />
     <ClCompile Include="code\Player.cpp" />
     <ClCompile Include="code\PotionHP.cpp" />
+    <ClCompile Include="code\PotionMP.cpp" />
     <ClCompile Include="code\Score.cpp" />
     <ClCompile Include="code\SFML.cpp" />
   </ItemGroup>

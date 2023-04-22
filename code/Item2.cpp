@@ -21,17 +21,12 @@ void Item2::spawnItem(sf::RectangleShape& spawnedItem, sf::Vector2f startPositio
 	spawnedItem.setPosition(startPosition);
 }
 
-void Item2::collectItem(sf::RectangleShape* collectedItem, Player* player, Inventory* inventory)//TODO ?
+void Item2::collectItem(sf::RectangleShape* collectedItem/*, Player* player*/, Inventory* inventory)//TODO kazdy obiket ma swoj counter - naprawic
 {
-	if (player->getShape().getGlobalBounds().intersects(collectedItem->getGlobalBounds()))
-	{
-		collectedItem->setPosition(-200.f, -200.f);
-		std::cout << "Item2::collectItem" << '\n';
-		inventory->addItem(this->getItemName());
-
-		//this->getItemName();
-		
-	}
+	collectedItem->setPosition(-200.f, -200.f);
+	//std::cout << "Item2::collectItem" << '\n';
+	inventory->addItem(this->getItemName());
+	//itemAmountGlobal++;
 }
 
 void Item2::deleteItem(sf::RectangleShape& deletedItem)
@@ -46,7 +41,6 @@ void Item2::drawItem(sf::RenderWindow& window, sf::RectangleShape drawedItem)
 
 std::string Item2::getItemName()
 {
-	//std::cout << "item2 itemName: " << itemName << '\n';
 	return itemName;
 }
 
