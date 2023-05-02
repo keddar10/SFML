@@ -82,9 +82,9 @@ void Item::grabItem(Player* object, Score* potionVis, Inventory* inventory)
 		//std::cout << "Item::grabItem zebrano: " << getItemName() << '\n';
 		potionS.setPosition(-50.f, -50.f);
 		itemColledted[0] = true;
-		object->getItem(potionS);
+		object->addItemToPlayer(potionS);
 		potionVis->getPotion();
-		inventory->addItem(getItemName());
+		inventory->addItemToInventory(getItemName());
 		
 	}
 }

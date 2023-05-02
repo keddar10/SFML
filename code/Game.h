@@ -32,7 +32,7 @@ class Game
 {
 public:
 	Game();
-	//~Game();
+	~Game();
 	void Loop();
 
 

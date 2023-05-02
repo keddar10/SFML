@@ -16,12 +16,15 @@ public:
 	~Item2();
 
 	void spawnItem(sf::RectangleShape&, sf::Vector2f);
-	void collectItem(sf::RectangleShape*/*, Player**/ , Inventory* );
+	//void collectItem(sf::RectangleShape*/*, Player**/ , Inventory* );
+	//virtual void addItem(Player*, Inventory*);
+	virtual void collectItem(/*Item2*,*/ Inventory*);
 	void deleteItem(sf::RectangleShape&);
 	void drawItem(sf::RenderWindow&, sf::RectangleShape);
 
+
 	std::string getItemName();
-	
+	virtual sf::RectangleShape getShape();
 
 
 protected:
@@ -29,4 +32,5 @@ protected:
 	std::string itemName;
 	sf::Vector2f defaultSize{ 20.f, 20.f };
 	sf::Color defaultColor{ sf::Color::Magenta };
+	sf::RectangleShape item2;
 };

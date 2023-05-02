@@ -11,7 +11,7 @@
 #define NUMBER_OF_ENEMIES 2
 #define NUMBER_OF_SHOTS 32 //mog¹ byc tylko wielokrotnosci czworki!
 #define NUMBER_OF_COINS 2
-#define NUMBER_OF_CHESTS 2
+#define NUMBER_OF_CHESTS 1
 //#define NUMBER_OF_PLATFORMS 13
 
 struct Const final {

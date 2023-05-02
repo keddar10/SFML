@@ -32,14 +32,15 @@ sf::RectangleShape* PotionHP::getShapePtr()
 
 void PotionHP::useEffect()
 {
-
+	std::cout << "PotionHP::useEffect()\n";
 }
 
-void PotionHP::addItem( Player* player, Inventory* inventory)
+void PotionHP::addItem( Player* player, Inventory* inventory, Item2* addedItem)
 {
-	if (player->getShape().getGlobalBounds().intersects(potionHP.getGlobalBounds()))
+	if (player->getShape().getGlobalBounds().intersects(addedItem->getShape().getGlobalBounds()))
 	{
-		collectItem(getShapePtr(), inventory);
+		//Item2::collectItem(getShapePtr(), inventory);
+		collectItem(/*addedItem,*/ inventory);
 		//setItemAmount();
 		//getItemAmount();
 	}
@@ -62,3 +63,10 @@ int PotionHP::setItemAmount()
 //{
 //	return itemName;
 //}
+
+void PotionHP::collectItem(/*Item2* item,*/ Inventory* inventory)//virtual void
+{
+	//item->getShape().setPosition(-200.f, -200.f);
+	potionHP.setPosition(-200.f, -200.f);
+	inventory->addItemToInventory(getItemName());
+}

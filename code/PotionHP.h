@@ -11,13 +11,14 @@ public:
 	PotionHP(sf::Vector2f);
 	~PotionHP();
 	sf::RectangleShape* getShapePtr();
-	sf::RectangleShape getShape();
-	std::string getItemName();
+	virtual sf::RectangleShape getShape() override;
+	//std::string getItemName();
 	void useEffect();
-	void addItem( Player* player, Inventory* inventory);
+	void addItem( Player*, Inventory*, Item2*);
 
 	int setItemAmount();
 	void getItemAmount();
+	virtual void collectItem(/*Item2*,*/ Inventory*) override;
 
 protected:
 	int healValue = 10;

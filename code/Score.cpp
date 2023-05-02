@@ -23,7 +23,7 @@ Score::Score()
 	scoreVis.setString(showedScore.str());
 
 	deathVis.setCharacterSize(30);
-	deathVis.setPosition(450.f, 620.f);
+	deathVis.setPosition(400.f, 620.f);
 	deathVis.setFont(arial);
 	deathVis.setString(showedDeath.str());	
 	

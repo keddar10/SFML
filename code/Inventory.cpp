@@ -84,7 +84,7 @@ bool Inventory::isItemNameUnique(/*std::string itemUniqueness[maxItemAmount], */
 	return true;
 }
 
-void Inventory::addItem(std::string itemName)
+void Inventory::addItemToInventory(std::string itemName)
 {
 	//itemAmount++;
 	arial.loadFromFile("arial.ttf");
@@ -125,7 +125,7 @@ void Inventory::addItem(std::string itemName)
 void Inventory::setItemSlot(std::string itemNameset, int positionInEq)
 {
 	strVec.push_back(itemNameset);
-	intVec.push_back(positionInEq);
+	intVec.push_back(positionInEq);//tutaj przekazuje itemSlot
 	//moze przekaze tutaj inreaseItemCount? 
 	//std::cout << "Inventory::setItemSlot NAME= " << itemNameset << " POSITION = " << positionInEq << '\n';
 }
@@ -150,23 +150,44 @@ unsigned int Inventory::getItemSlot(int counter)
 	return intVec[counter];
 }
 
+void Inventory::substractItemAmount(int itemAmountArray)
+{
+	if (itemAmountArray == 0 && itemAmount != 0)
+	{
+		//std::rotate? jeœli itemAmount spada mi do 0 to przerzucam item na koniec i go usuwam przez pop_back, to ni¿ej oddzielone tabem 
+		uint8_t offset = itemSelector - 1;
+		std::rotate(intVec.begin() + offset, intVec.begin() + itemSelector, intVec.end());//przerzuca aktualny item na sam koniec wektora jako indeks
+		intVec.pop_back();//tu usuwa ten item jako indeks
+		std::rotate(strVec.begin() + offset, strVec.begin() + itemSelector, strVec.end());//item na koneic wektora jako nazwa
+		strVec.pop_back();//usuwa item jako nazwe
+		//TODO jak zbiore HP a potem MP, ale najpierw zjem HP, to:
+		//1. widze HP mimo wszystko w inventory - nie podmienia siê, zjadam item po lokalizacji czy coœ?
+		//2. intVec dla MP ma wartosc 2, a powinien chyba 1?
+		//3. coœ jeszcze na pewno jest Ÿle xD
+		itemAmount--;
+		itemSlot--;
+		std::cout << "Inventory::substractItemAmount itemAmount = " << itemAmount << '\n';//jakiœ switch itemów? pushback coœ takiego?
+	}
+}
+
 void Inventory::deleteItem()//TODO naprawic delete item xd + wybraæ ktory item uzywam 
 {
 	//TODO itemCount i strVec nie dziala w taki sam sposób
 	//TODO na nowo podjac sie usuwania/uzywania itemow
 	//resetItemSelector();
 	//musze przekazaæ tutaj dok³adnie który item zu¿ywam! a nie w zale¿noœci od itemSelector! tzn w zale¿noœci od niego, ale inaczej xD
-	if (switchInv  && itemCount[itemSelector] > 0)
+	if (switchInv  && itemCount[itemSelector - 1] > 0)
 	{
 		std::cout << '\n';
-		std::cout << "deleteItem(): item used int: " << intVec[itemSelector -1 ] << '\n';
-		std::cout << "deleteItem(): item used string: " << strVec[itemSelector -1  ] << '\n';
+		std::cout << "deleteItem()intVec: item used int: " << intVec[itemSelector -1 ] << '\n';
+		std::cout << "deleteItem()strVec: item used string: " << strVec[itemSelector -1  ] << '\n';
 		itemCount[itemSelector-1]--;
-		std::cout << "deleteItem(): itemCount[iS]arter subtraction: " << itemCount[itemSelector - 1] << '\n';
+		substractItemAmount(itemCount[itemSelector - 1]);
+		std::cout << "deleteItem(): itemCount[i]after subtraction: " << itemCount[itemSelector - 1] << "\n\n";
 	}
 	else
 	{
-		std::cout << "brak itemu SP" << '\n';
+		std::cout << "brak itemu" << '\n';
 	}
 }
 
@@ -183,9 +204,14 @@ void Inventory::selectItem(sf::Event& eventCalled)
 	resetItemSelector();
 	if (switchInv && eventCalled.type == sf::Event::KeyReleased && eventCalled.key.code == sf::Keyboard::J && itemSlot != 0)
 	{
+		for (int i = 0; i<itemAmount;i++)//tylko do kontroli
+		{
+			std::cout << "intVec["<<i<<"]: " << intVec[i]<<'\n';
+			std::cout << "strVec["<<i<<"]: " << strVec[i]<<'\n';
+		}
 		std::cout << "selectItem(): " << itemSelector<<'\n';
-		std::cout << "selectItem(): selected item str:" << strVec[itemSelector-1] << '\n';
-		std::cout << "selectItem(): selected item int:" << intVec[itemSelector-1] << '\n';
+		std::cout << "selectItem()intVec: selected item int:" << intVec[itemSelector-1] << '\n';
+		std::cout << "selectItem()strVec: selected item str:" << strVec[itemSelector-1] << '\n';
 		std::cout << "selectItem(): selected item itemCount:" << itemCount[itemSelector-1] << '\n';//nie itemCount, bo itemCount przechowuje STA£E po³o¿enia elementów, MP zawsze jest [1], 
 		//a jak zbiorê go pierwszego to wyœwietlam tutaj itemCoumt [0], bo itemSelector = 1 
 		
@@ -255,4 +281,9 @@ int Inventory::increaseItemCount(std::string nameOfItem)
 bool Inventory::getSwitchInv()
 {
 	return switchInv;
+}
+
+int Inventory::getItemAmount()
+{
+	return itemAmount;
 }

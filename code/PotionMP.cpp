@@ -30,9 +30,9 @@ sf::RectangleShape* PotionMP::getShapePtr()
 	return foo;
 }
 
-void PotionMP::effect()
+void PotionMP::useEffect()
 {
-
+	std::cout << "PotionMP::effect()\n";
 }
 
 
@@ -40,7 +40,8 @@ void PotionMP::addItem(Player* player, Inventory* inventory)
 {
 	if (player->getShape().getGlobalBounds().intersects(potionMP.getGlobalBounds()))
 	{
-		collectItem(getShapePtr(), inventory);
+		//Item2::collectItem(getShapePtr(), inventory);
+		collectItem(/*this,*/ inventory);
 		//setItemAmount();
 		//getItemAmount();
 	}
@@ -62,3 +63,10 @@ int PotionMP::setItemAmount()
 //{
 //	return itemName;
 //}
+
+void PotionMP::collectItem(/*Item2* item,*/ Inventory* inventory)
+{
+	//item->getShape().setPosition(-200.f, -200.f);
+	potionMP.setPosition(-200.f, -200.f);
+	inventory->addItemToInventory(getItemName());
+}

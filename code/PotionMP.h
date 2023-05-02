@@ -12,12 +12,13 @@ public:
 	~PotionMP();
 	sf::RectangleShape* getShapePtr();
 	sf::RectangleShape getShape();
-	std::string getItemName();
-	void effect();
+	//std::string getItemName();
+	void useEffect();
 	void addItem(Player*, Inventory*);
 
 	int setItemAmount();
 	void getItemAmount();
+	virtual void collectItem(/*Item2*,*/ Inventory*) override;
 
 protected:
 	int manaValue = 10;

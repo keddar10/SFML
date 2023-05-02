@@ -83,7 +83,6 @@ void Enemy::moveEnemy(int i)
 
 void Enemy::moveEnemy(int i, bool slowerActive)
 {
-
 	if (slowerActive == false)
 	{
 		if (enemy[i].getGlobalBounds().left < 0.f || enemy[i].getGlobalBounds().left > WINDOW_WIDTH - enemy[i].getSize().x) 

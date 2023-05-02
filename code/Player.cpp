@@ -338,15 +338,13 @@ void Player::collisionWithObstacle(Obstacle* platform)
 }
 
 void Player::teleport()
-{
-	
-		player.setPosition(sf::Vector2f{ startPosition });
-	
+{	
+	player.setPosition(sf::Vector2f{ startPosition });	
 }
 
-void Player::glowPlayer(bool digit)
+void Player::glowPlayer(bool active)
 {	
-	if (digit == true)
+	if (active)
 	{
 		uint8_t shellThickness = 5;
 		sf::Vector2f shellDimenstionsW(playerWidth + shellThickness, shellThickness);
@@ -381,10 +379,10 @@ void Player::glowPlayer(bool digit)
 	
 }
 
-void Player::getItem(sf::RectangleShape item)
+void Player::addItemToPlayer(sf::RectangleShape item)
 {
 	
-	itemCount++;
+	itemCount++;//cyhba tego nie potrzebuje
 
 }
 
@@ -393,9 +391,9 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 {
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::C)
 	{
-		if (itemCount>0 && inventory->getSwitchInv())
+		if (/*itemCount>0 &&*/inventory->getItemAmount()>0 && inventory->getSwitchInv())
 		{
-			//std::cout << "Player::useItem() is called" << '\n';
+			std::cout << "Player::useItem() is called" << '\n';
 			itemCount--;
 			potionVis->usePotion();
 			scoreVis->getScore(10);
@@ -403,10 +401,10 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 			inventory->deleteItem();
 
 		}
-		//else
-		//{
-		//	std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
-		//}
+		else if (inventory->getItemAmount() == 0)
+		{
+			std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
+		}
 	}
 }
 

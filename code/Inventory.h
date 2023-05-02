@@ -19,7 +19,8 @@ public:
 	void drawInv(sf::RenderWindow&);
 
 	void showInv(sf::Event&);
-	void addItem(std::string);
+	void addItemToInventory(std::string);
+	void substractItemAmount(int);
 	void deleteItem();
 	bool isItemNameUnique(/*std::string [],*/ int);
 	//int getItemCountInString(int);
@@ -36,7 +37,7 @@ public:
 	int getItemCountInInt(std::string);
 
 	void selectItem(sf::Event&);
-
+	int getItemAmount();
 	//void getItemSlot(std::string);
 private:
 	// maksymalna iloœæ itemów jak¹ mogê mieæ w plecaku, 
@@ -63,10 +64,10 @@ private:
 
 	int itemPositionInInventory = 30;
 
-	int itemAmount = 0;
-	int itemSlot = 0;
-	int itemCount[maxItemAmount] = { 0 };//wszystkie elementy tablicy s¹ równe 0
-	int itemSelector = 1;
+	int itemAmount = 0;//to jest iloœæ UNIKALNYCH itemów
+	int itemSlot = 0;//to jest pozycja w ekwipunku, przedmiot jest pierwszy, drugi itd.
+	int itemCount[maxItemAmount] = { 0 };//wszystkie elementy tablicy s¹ równe 0, itemCount to tablica intów, itemCount[i] to aktualnie zebrany item, wartoœci przypisane do tablicy to iloœæ sztuk danego itemu
+	int itemSelector = 1;//pomaga przy wyœwietlaniu i wybieraniu/u¿ywaniu itp itemów w wyœwietlonym ekwipunku
 	int characterSize = 25;//to bym mogl dac globalnie nawet w definitions moze?
 	sf::Font arial;
 	
