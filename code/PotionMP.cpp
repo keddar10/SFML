@@ -32,7 +32,7 @@ sf::RectangleShape* PotionMP::getShapePtr()
 
 void PotionMP::useEffect()
 {
-	std::cout << "PotionMP::effect()\n";
+	std::cout << "PotionMP::useEffect()\n";
 }
 
 

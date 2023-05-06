@@ -68,7 +68,7 @@ private:
 
 
 	//int cooldown = 2000;
-	int cooldownAccelerator = 6000;
+	int cooldownAccelerator = 7000;
 	int cooldownDestroyer = 15000;
 	int cooldownSlower = 10000;
 	int cooldownFriendly = 30000;

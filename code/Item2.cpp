@@ -71,4 +71,9 @@ sf::RectangleShape Item2::getShape()
 	return item2;
 }
 
+void Item2::useEffect()
+{
+	std::cout << "Item2::useEffect()\n";
+}
+
 

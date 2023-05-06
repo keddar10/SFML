@@ -302,7 +302,7 @@ void Player::collisionWithObstacle(Obstacle* platform)
 		player.setPosition(sf::Vector2f(player.getPosition().x, platform->posYMin() - playerHeight - V0_FALL_SPEED));//tutaj V0 FALL_SPEED jest offsetem jaki nadajê do ka¿dego styku gracza z platform¹, by siê nie zatapia³, prêdkoœæ powoduje zapadanie siê, im wiêksza tym wiêksze zatopienie
 			
 			isInAir(false);
-			timePassed.restart();
+			timePassed.restart();//TODO add coyote time
 	}
 
 	//Kolizja PRAWO
@@ -379,31 +379,30 @@ void Player::glowPlayer(bool active)
 	
 }
 
-void Player::addItemToPlayer(sf::RectangleShape item)
-{
-	
-	itemCount++;//cyhba tego nie potrzebuje
+//void Player::addItemToPlayer(sf::RectangleShape item)
+//{
+//	
+//	itemCount++;//cyhba tego nie potrzebuje
+//
+//}
 
-}
 
-
-void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event)
+void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event/*, Item2* itemUsed*/)
 {
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::C)
 	{
-		if (/*itemCount>0 &&*/inventory->getItemAmount()>0 && inventory->getSwitchInv())
+		if (/*itemCount>0 &&*/inventory->getItemCount()>0 && inventory->getSwitchInv())
 		{
 			std::cout << "Player::useItem() is called" << '\n';
-			itemCount--;
+			//itemCount--;
 			potionVis->usePotion();
 			scoreVis->getScore(10);
-			
+			//itemUsed->useEffect();
 			inventory->deleteItem();
-
 		}
-		else if (inventory->getItemAmount() == 0)
+		else if (inventory->getItemCount() == 0)
 		{
-			std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
+			std::cout << "Player::useItem() Brak odpowiedniego przedmiotu!" << '\n';
 		}
 	}
 }

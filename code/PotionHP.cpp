@@ -40,7 +40,7 @@ void PotionHP::addItem( Player* player, Inventory* inventory, Item2* addedItem)
 	if (player->getShape().getGlobalBounds().intersects(addedItem->getShape().getGlobalBounds()))
 	{
 		//Item2::collectItem(getShapePtr(), inventory);
-		collectItem(/*addedItem,*/ inventory);
+		collectItem(inventory);
 		//setItemAmount();
 		//getItemAmount();
 	}

@@ -10,9 +10,10 @@
 #include "Coin.h"
 #include "Score.h"
 #include "Inventory.h"
+#include "Item2.h"
 
 /* forward declarations */
-class Item;
+//class Item;
 
 class Player : public Obstacle
 {
@@ -56,7 +57,7 @@ public:
 	//std::vector <sf::RectangleShape> inventory;
 	//std::vector <bool> canBeUsed;//?
 	void addItemToPlayer(sf::RectangleShape);
-	void useItem( Score*, Score*, Inventory*, sf::Event& );
+	void useItem( Score*, Score*, Inventory*, sf::Event&/*, Item2* */);
 
 	sf::RectangleShape getShape();
 	sf::RectangleShape getShapeShell(int );

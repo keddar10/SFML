@@ -9,6 +9,7 @@
 //C use item
 //I show eq
 //J next item in eq
+//U show itemSelector value
 
 Game::Game()
 {
@@ -76,7 +77,6 @@ Game::Game()
 	//{
 	//    item[i] = new Item("speed", i - 6);
 	//}
-
 	for (int i = 0;i<NUMBER_OF_HP_POTIONS;i++)
 	{
 		potionHP[i] = new PotionHP(sf::Vector2f(280.f+i*40.f, 240.f));
@@ -224,12 +224,22 @@ void Game::Loop()
 				player->getPos();
 
 			//player events
-			player->useItem( scoreVis, scoreVis, inventory, event);
+			//for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
+			//{
+				player->useItem(scoreVis, scoreVis, inventory, event/*, potionHP[i]*/);
+			//}			
+			//for (int i = 0; i<NUMBER_OF_MP_POTIONS;i++)
+			//{
+			//	player->useItem(scoreVis, scoreVis, inventory, event, potionMP[i]);
+			//}
 			
 			//inventory events
 			inventory->showInv(event);
 			inventory->selectItem(event);
-
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::U))
+		{
+			inventory->showItemSelectorValue();
 		}
 
 

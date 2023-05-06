@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include "Item2.h"
+#include "Player.h"
 
 class PotionHP : public Item2
 {
@@ -13,7 +14,7 @@ public:
 	sf::RectangleShape* getShapePtr();
 	virtual sf::RectangleShape getShape() override;
 	//std::string getItemName();
-	void useEffect();
+	virtual void useEffect() override;
 	void addItem( Player*, Inventory*, Item2*);
 
 	int setItemAmount();

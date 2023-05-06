@@ -6,9 +6,9 @@
 #include <SFML\Graphics.hpp>
 
 #include "Inventory.h"
-#include "Player.h"
 
-class Item2
+
+class Item2 
 {
 public:
 	Item2();
@@ -25,6 +25,7 @@ public:
 
 	std::string getItemName();
 	virtual sf::RectangleShape getShape();
+	virtual void useEffect();
 
 
 protected:

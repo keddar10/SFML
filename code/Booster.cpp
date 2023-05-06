@@ -153,12 +153,12 @@ void Booster::showTime(std::string name, int cooldown, sf::Time timeLeft, sf::Ve
 
 void Booster::spawnBooster()
 {
-	sf::Time time = respawnTimeAcc.getElapsedTime();
+	sf::Time timeAcc = respawnTimeAcc.getElapsedTime();
 	std::random_device pos;
 	std::uniform_real_distribution<float> rangeX(0, 1280 - booster.getSize().x);
 	std::uniform_real_distribution<float> rangeY(0, GROUND_HEIGHT - booster.getSize().y);	
 
-	if (time.asMilliseconds() >= cooldownAccelerator && boosterCanBeSpawned[0] == true)
+	if (timeAcc.asMilliseconds() >= cooldownAccelerator && boosterCanBeSpawned[0] == true)
 	{
 		booster.setPosition(rangeX(pos), rangeY(pos));
 		boosterCanBeSpawned[0] = false;
@@ -258,13 +258,12 @@ void Booster::accel(Player* object)
 	}
 	//object->setPlayerTexturePosition();
 
-	object->movementPlayer(boosterActive);
-
 	if (time.asMilliseconds() >= duration)
 	{
 		boosterActive = false;
-		timePassed.restart();
 	}
+	object->movementPlayer(boosterActive);
+
 
 }
 
