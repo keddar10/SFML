@@ -5,8 +5,8 @@
 
 #include <SFML\Graphics.hpp>
 
-#include "Inventory.h"
 
+class Inventory;
 
 class Item2 
 {

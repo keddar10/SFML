@@ -387,7 +387,7 @@ void Player::glowPlayer(bool active)
 //}
 
 
-void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event/*, Item2* itemUsed*/)
+void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event, Item2* itemUsed)
 {
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::C)
 	{
@@ -398,7 +398,7 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 			potionVis->usePotion();
 			scoreVis->getScore(10);
 			//itemUsed->useEffect();
-			inventory->deleteItem();
+			inventory->deleteItem(itemUsed);
 		}
 		else if (inventory->getItemCount() == 0)
 		{

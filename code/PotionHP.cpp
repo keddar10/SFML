@@ -1,4 +1,6 @@
 #include "PotionHP.h"
+#include "Player.h"
+#include "Inventory.h"
 
 PotionHP::PotionHP() 
 {

@@ -1,5 +1,6 @@
 #include "PotionMP.h"
-
+#include "Player.h"
+#include "Inventory.h"
 PotionMP::PotionMP()
 {
 

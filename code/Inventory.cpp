@@ -1,5 +1,5 @@
 #include "Inventory.h"
-
+#include "Item2.h"
 Inventory::Inventory()
 {
 	sf::Vector2f inventorySize{200.f, 350.f};
@@ -219,7 +219,7 @@ void Inventory::substractItemAmount(int itemAmountArray)
 	}
 }
 
-void Inventory::deleteItem()
+void Inventory::deleteItem(Item2* itemUsed)
 {
 	//TODO na nowo podjac sie usuwania/uzywania itemow
 	std::cout << '\n';
@@ -236,6 +236,7 @@ void Inventory::deleteItem()
 		{
 			std::cout << "deleteItem(): itemCount[i]after subtraction: " << itemCount[itemSelector] << "\n\n";
 		}
+		itemUsed->useEffect();
 	}
 	else if (switchInv && itemSelector > 0  && itemCount[itemSelector-1] > 0)
 	{
@@ -249,6 +250,7 @@ void Inventory::deleteItem()
 		{
 			std::cout << "deleteItem(): itemCount[i]after subtraction: " << itemCount[itemSelector - 1] << "\n\n";
 		}
+		itemUsed->useEffect();
 	}
 	else 
 	{ 

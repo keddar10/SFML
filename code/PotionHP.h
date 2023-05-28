@@ -2,8 +2,12 @@
 
 #include <iostream>
 #include <sstream>
+#include <SFML/Graphics.hpp>
 #include "Item2.h"
-#include "Player.h"
+
+class Player;
+class Item2;
+class Inventory;
 
 class PotionHP : public Item2
 {

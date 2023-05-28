@@ -1,5 +1,8 @@
 #include "Item2.h"
 
+#include "Inventory.h"
+
+
 Item2::Item2()
 {
 	itemName = "default";

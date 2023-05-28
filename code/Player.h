@@ -57,7 +57,7 @@ public:
 	//std::vector <sf::RectangleShape> inventory;
 	//std::vector <bool> canBeUsed;//?
 	void addItemToPlayer(sf::RectangleShape);
-	void useItem( Score*, Score*, Inventory*, sf::Event&/*, Item2* */);
+	void useItem( Score*, Score*, Inventory*, sf::Event&, Item2* );
 
 	sf::RectangleShape getShape();
 	sf::RectangleShape getShapeShell(int );

@@ -226,7 +226,7 @@ void Game::Loop()
 			//player events
 			//for (int i = 0; i<NUMBER_OF_HP_POTIONS;i++)
 			//{
-				player->useItem(scoreVis, scoreVis, inventory, event/*, potionHP[i]*/);
+			player->useItem(scoreVis, scoreVis, inventory, event, potionHP[0]);//TODO zamiast vector itemow zrobic 1 item, ktory mozna uzywac gdy ilosc w vectorze != 0, wtedy zniknie problem wywolywania potionHP[i] 
 			//}			
 			//for (int i = 0; i<NUMBER_OF_MP_POTIONS;i++)
 			//{

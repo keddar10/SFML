@@ -34,7 +34,7 @@ public:
 	Game();
 	~Game();
 	void Loop();
-
+	//void itemEffect(Item2*, Player*);
 
 	static inline constexpr std::uint8_t NUMBER_OF_PLATFORMS = 14;//constexprt znaczy ze to jest sta³a w momencie kompilacji i jest tak sta³a ¿e ojeja, static to jest ¿e jak kompilator 
 	//se kompiluje to ta zmienna nie jest powuiazana z obiektem tlyko z klaas, nie opitrzebuje do neij obiektu klasy Game tylko ona jest w tej klasie
@@ -72,3 +72,8 @@ private:
 
 
 };
+
+//void itemEffect(Item2* item, Player* player)
+//{
+//
+//}

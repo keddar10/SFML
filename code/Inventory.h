@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <sstream>
 #include <vector>
+class Item2;
 
 class Inventory
 {
@@ -22,7 +23,7 @@ public:
 	void addItemToInventory(std::string);
 	void replaceItemNames();
 	void substractItemAmount(int);
-	void deleteItem();
+	void deleteItem(Item2*);
 	bool isItemNameUnique(/*std::string [],*/ int);
 	//int getItemCountInString(int);
 	std::string getItemCountInString(int);
