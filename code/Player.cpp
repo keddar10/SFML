@@ -4,6 +4,13 @@
 
 
 #include "Player.h"
+#include "Coin.h"
+#include "Enemy.h"
+#include "Inventory.h"
+#include "Item2.h"
+#include "Obstacle.h"
+#include "Score.h"
+
 
 
 //#include "Obstacle.h"
@@ -157,9 +164,6 @@ void Player::movementPlayer(bool accelActive)
 			playerSprite.move(movSpeed, 0.f);
 			player.move(movSpeed, 0.f);
 		}
-
-
-
 	}
 	else
 	{
@@ -253,9 +257,8 @@ void Player::getPos()
 
 bool Player::checkCollisionLeft()
 {
-	
-	float x0 = leftB.getPosition().x;
-	float xMax = rightB.getPosition().x;
+	float x0 = 0.f;// teraz daje te wartosci na stale przez forward declaration i usuniecie dziedziczenia
+	float xMax = WINDOW_WIDTH-1.f;//jw
 	if (player.getGlobalBounds().left < x0 ) player.setPosition(sf::Vector2f({ x0 , player.getPosition().y}));
 	if (player.getGlobalBounds().left > xMax-playerWidth) player.setPosition(sf::Vector2f({ xMax-playerWidth , player.getPosition().y }));
 	

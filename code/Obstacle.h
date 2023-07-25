@@ -32,8 +32,8 @@ public:
 
 	sf::RectangleShape getShape();
 	
-protected:
 
+protected:
 	sf::RectangleShape platform;
 	sf::RectangleShape leftB;
 	sf::RectangleShape rightB;
@@ -48,7 +48,9 @@ protected:
 	//std::vector <sf::Sprite> platformSpriteArr;
 	//sf::Sprite platformSprite[Game::NUMBER_OF_PLATFORMS][100];
 	sf::Sprite platformSprite[maxNumOfSprites];
-	
+public:
+	float getLeftBPos();
+	float getRightBPos();
 	
 	
 	

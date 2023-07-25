@@ -1,7 +1,7 @@
 #include<iostream>
 #include<cmath>
 #include"Obstacle.h"
-#include"Player.h"
+//#include"Player.h"
 #include "DEFINITIONS.h"
 
 
@@ -82,6 +82,18 @@ float Obstacle::leftBoundary(float left)
 {	
 	return left;
 }
+
+float Obstacle::getLeftBPos()
+{
+	return leftB.getPosition().x;
+}
+
+float Obstacle::getRightBPos()
+{
+	return rightB.getPosition().x;
+}
+
+
 
 float Obstacle::posYMin()
 {

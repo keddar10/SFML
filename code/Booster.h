@@ -1,13 +1,12 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "Player.h"
-#include "Enemy.h"
-#include "Score.h"
 #include <sstream>
+#include "DEFINITIONS.h"
+class Enemy;
+class Player;
+class Score;
 
-
-
-class Booster : public Enemy, public Player
+class Booster// : public Enemy, public Player
 {
 public:
 	Booster(int);
@@ -68,10 +67,12 @@ private:
 
 
 	//int cooldown = 2000;
-	int cooldownAccelerator = 7000;
-	int cooldownDestroyer = 15000;
-	int cooldownSlower = 10000;
-	int cooldownFriendly = 30000;
+	int cooldownAccelerator = 1000;//7000
+	int cooldownDestroyer = 1500;//15s
+	int cooldownSlower = 1000;//10s
+	int cooldownFriendly = 3000;//30s
+
+	uint8_t shellNo;
 
 	std::ostringstream showedTime;
 

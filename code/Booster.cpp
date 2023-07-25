@@ -1,5 +1,7 @@
 #include "Booster.h"
 #include "Enemy.h"
+#include "Player.h"
+#include "Score.h"
 
 #include <random>
 #include <iostream>
@@ -247,6 +249,12 @@ void Booster::accel(Player* object)
 	sf::Time time = timePassed.getElapsedTime();
 	int duration = 10000;	
 	showTime("Accelerator", cooldownAccelerator, time, sf::Vector2f (600.f,620.f));
+
+	if (time.asMilliseconds() >= duration)//musi byc przed tym drugim ifem - inaczej po zebraniu czasem sie nie zalacza booster, czas sie resetuje w kolejnym wywolaniu funkcji dopiero?
+	{
+		boosterActive = false;
+	}
+
 	if (object->getShape().getGlobalBounds().intersects(booster.getGlobalBounds()))
 	{
 		timePassed.restart();
@@ -254,21 +262,13 @@ void Booster::accel(Player* object)
 		booster.setPosition(-50.f, -50.f);
 		respawnTimeAcc.restart();
 		boosterCanBeSpawned[0] = true;
-		
-	}
-	//object->setPlayerTexturePosition();
-
-	if (time.asMilliseconds() >= duration)
-	{
-		boosterActive = false;
 	}
 	object->movementPlayer(boosterActive);
-
-
 }
 
 void Booster::destroy(Player* object, Enemy* enemy, Score* score)
 {	
+	shellNo = object->NUMBER_OF_SHELL;
 	sf::Time time = timePassedDes.getElapsedTime();
 	sf::Time timeEnemyRespawn[NUMBER_OF_ENEMIES];
 	int duration = 5000;
@@ -292,7 +292,7 @@ void Booster::destroy(Player* object, Enemy* enemy, Score* score)
 
 	for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
 	{
-		for (int j = 0; j<NUMBER_OF_SHELL;j++)
+		for (int j = 0; j<shellNo;j++)
 		{
 			if (boosterActiveDes == true && object->getShapeShell(j).getGlobalBounds().intersects(enemy->getShape(i).getGlobalBounds()))
 			{
