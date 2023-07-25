@@ -67,10 +67,10 @@ private:
 
 
 	//int cooldown = 2000;
-	int cooldownAccelerator = 1000;//7000
-	int cooldownDestroyer = 1500;//15s
-	int cooldownSlower = 1000;//10s
-	int cooldownFriendly = 3000;//30s
+	int cooldownAccelerator = 7000;//7s
+	int cooldownDestroyer = 15000;//15s
+	int cooldownSlower = 10000;//10s
+	int cooldownFriendly = 30000;//30s
 
 	uint8_t shellNo;
 

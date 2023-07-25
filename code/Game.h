@@ -10,21 +10,22 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "Background.h"
-#include "Booster.h"
-#include "Coin.h"
-#include "Chest.h"
 #include "DEFINITIONS.h"
-#include "Enemy.h"
-#include "Interactive.h"
-#include "Inventory.h"
-#include "Item.h"
-#include "Item2.h"
-#include "Player.h"
-#include "PotionHP.h"
-#include "PotionMP.h"
-#include "Obstacle.h"
-#include "Score.h"
+
+
+class Background;
+class Booster;
+class Coin;
+class Chest;
+class Enemy;
+class Inventory;
+class Item2;
+class Player;
+class PotionHP;
+class PotionMP;
+class Obstacle;
+class Score;
+
 
 
 

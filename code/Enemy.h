@@ -1,10 +1,9 @@
 #pragma once
 #include<SFML/Graphics.hpp>
-#include"Obstacle.h"
 #include "DEFINITIONS.h"
 //#include "Player.h"
-#include "Score.h"
 #include <iostream>
+
 class Enemy
 {
 public:

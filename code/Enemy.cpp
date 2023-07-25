@@ -1,5 +1,8 @@
 #include<iostream>
 #include "Enemy.h"
+//#include "Score.h"
+//#include"Obstacle.h"
+
 #include <algorithm>
 #include <random>
 

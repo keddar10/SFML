@@ -1,5 +1,21 @@
 #include "Game.h"
 
+#include "Background.h"
+#include "Booster.h"
+#include "Coin.h"
+#include "Chest.h"
+#include "Enemy.h"
+#include "Interactive.h"
+#include "Inventory.h"
+#include "Item.h"
+#include "Item2.h"
+#include "Player.h"
+#include "PotionHP.h"
+#include "PotionMP.h"
+#include "Obstacle.h"
+#include "Score.h"
+
+
 #include <memory>
 
 //sterowanie:
