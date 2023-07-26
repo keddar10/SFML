@@ -272,21 +272,20 @@ void Inventory::selectItem(sf::Event& eventCalled)
 	if (switchInv && eventCalled.type == sf::Event::KeyReleased && eventCalled.key.code == sf::Keyboard::J && itemSlot != 0)
 	{
 		resetItemSelector();
-		for (int i = 0; i<itemAmount;i++)//tylko do kontroli
-		{
-			std::cout << "intVec["<<i<<"]: " << intVec[i]<<'\n';
-			std::cout << "strVec["<<i<<"]: " << strVec[i]<<'\n';
-			std::cout << "itemCount[" << i << "]: " << itemCount[i] << '\n';
-		}
-		std::cout << "selectItem(): itemSlot: " << itemSlot << '\n';
-		std::cout << "selectItem()intVec: selected item int:" << intVec[itemSelector] << '\n';
-		std::cout << "selectItem()strVec: selected item str:" << strVec[itemSelector] << '\n';
-		std::cout << "selectItem(): selected item itemCount:" << itemCount[itemSelector] << '\n';
+		//for (int i = 0; i<itemAmount;i++)//tylko do kontroli
+		//{
+		//	std::cout << "intVec["<<i<<"]: " << intVec[i]<<'\n';
+		//	std::cout << "strVec["<<i<<"]: " << strVec[i]<<'\n';
+		//	std::cout << "itemCount[" << i << "]: " << itemCount[i] << '\n';
+		//}
+		//std::cout << "selectItem(): itemSlot: " << itemSlot << '\n';
+		//std::cout << "selectItem()intVec: selected item int:" << intVec[itemSelector] << '\n';
+		//std::cout << "selectItem()strVec: selected item str:" << strVec[itemSelector] << '\n';
+		//std::cout << "selectItem(): selected item itemCount:" << itemCount[itemSelector] << '\n';
 		
 		++itemSelector;
 		inventoryIndex.setPosition(inventoryIndex.getPosition().x, static_cast<float>(/*getItemSlot(itemSelector) **/((itemSelector+1) * itemVerticalDistanceInInventory)-characterSize/2));//dodaje "+1" przy itemSelector
-		std::cout << "selectItem() itemSelector: " << itemSelector<<'\n';
-		
+		//std::cout << "selectItem() itemSelector: " << itemSelector<<'\n';		
 	}	
 }
 
@@ -298,6 +297,13 @@ std::string Inventory::getItemCountInString(int i)//zamiana itemCount na string 
 	
 	return returnedString;
 }
+
+unsigned int Inventory::getItemSelector()
+{
+	return itemSelector;
+}
+
+
 
 int Inventory::getItemCountInInt(std::string nameOfItem)
 {

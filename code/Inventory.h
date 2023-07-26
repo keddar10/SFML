@@ -25,10 +25,10 @@ public:
 	void substractItemAmount(int);
 	void deleteItem(Item2*);
 	bool isItemNameUnique(/*std::string [],*/ int);
-	//int getItemCountInString(int);
+
 	std::string getItemCountInString(int);
-	//int increaseItemCount(int, int);
-	//int decreaseItemCount(std::string);
+	unsigned int getItemSelector();
+
 	void decreaseItemCount(std::string );
 	int increaseItemCount(std::string);
 

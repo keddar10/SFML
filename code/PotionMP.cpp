@@ -8,7 +8,7 @@ PotionMP::PotionMP()
 
 PotionMP::PotionMP(sf::Vector2f(startPosition))
 {
-	itemName = "MP potion";
+	itemName = "I_MP potion";
 	potionMP.setSize(defaultSize);
 	potionMP.setFillColor(sf::Color::Blue);
 	//std::cout << "potionMP itemName: " << itemName << '\n' << "potionMP.getsize().x " << potionMP.getSize().x << '\n';

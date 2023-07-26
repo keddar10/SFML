@@ -401,7 +401,12 @@ void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf
 			potionVis->usePotion();
 			scoreVis->getScore(10);
 			//itemUsed->useEffect();
-			inventory->deleteItem(itemUsed);
+			if (inventory->getItemSlot(itemUsed->getItemName()) == inventory->getItemSelector() - 1)//TODO po uzyciu wszystkich itemow danego typu nie ma przeskoku na "kolejny" tylko uzywa sie caly czas ten, ktorego juz nie ma
+			{
+				std::cout << "getItemSlot:" << inventory->getItemSlot(itemUsed->getItemName()) << '\n';
+				std::cout << "getItemSelector: " << inventory->getItemSelector() << '\n';
+				inventory->deleteItem(itemUsed);
+			}
 		}
 		else if (inventory->getItemCount() == 0)
 		{

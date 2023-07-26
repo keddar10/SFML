@@ -9,7 +9,7 @@ PotionHP::PotionHP()
 
 PotionHP::PotionHP(sf::Vector2f (startPosition))
 {
-	itemName = "Hp potion";
+	itemName = "I_Hp potion";
 	potionHP.setSize(defaultSize);
 	potionHP.setFillColor(sf::Color::Red);
 	//std::cout <<"potionHP itemName: " << itemName << '\n' << "potionHP.getsize().x " << potionHP.getSize().x << '\n';

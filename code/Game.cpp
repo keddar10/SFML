@@ -209,7 +209,7 @@ void Game::Loop()
 			destroyer->destroy(player,enemy[i], scoreVis);
 		}
 
-		//slower     
+		//slower
 		for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
 		{
 			slower->slow(player, enemy[i]);
