@@ -14,7 +14,8 @@
 #include "PotionMP.h"
 #include "Obstacle.h"
 #include "Score.h"
-
+#include "Sword.h"
+//#include "Weapon.h"
 
 #include <memory>
 
@@ -107,11 +108,16 @@ Game::Game()
 	//inventory
 	inventory = new Inventory();
 
+	//weapons
+	//weapon = new Weapon();
+	sword = new Sword();
 
 }
 
 Game::~Game()
 {
+	delete sword;
+	//delete weapon;
 	delete inventory;
 	for (int i = NUMBER_OF_MP_POTIONS - 1; 0<=i; --i){
 		delete potionMP[i];
@@ -289,6 +295,9 @@ void Game::Loop()
 		
 		//chest logic
 		chest[0]->action(player, 0);
+
+		//weapons logic
+		sword->stickToPlayer(player);
 		
 		//window display
 		window->clear();
@@ -333,7 +342,9 @@ void Game::Loop()
 		}
 
 		player->drawTo(*window);
+		sword->drawWeapon(*window);
 		inventory->drawInv(*window);
+
 
 
 		window->display();

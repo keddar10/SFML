@@ -25,7 +25,8 @@ class PotionHP;
 class PotionMP;
 class Obstacle;
 class Score;
-
+class Sword;
+class Weapon;
 
 
 
@@ -70,7 +71,8 @@ private:
 	//Player* shell;
 
 	//Booster* timeVis;
-
+	//Weapon* weapon;
+	Sword* sword;
 
 };
 

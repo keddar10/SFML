@@ -158,6 +158,8 @@
     <ClInclude Include="code\PotionHP.h" />
     <ClInclude Include="code\PotionMP.h" />
     <ClInclude Include="code\Score.h" />
+    <ClInclude Include="code\Sword.h" />
+    <ClInclude Include="code\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Background.cpp" />
@@ -177,6 +179,8 @@
     <ClCompile Include="code\PotionMP.cpp" />
     <ClCompile Include="code\Score.cpp" />
     <ClCompile Include="code\SFML.cpp" />
+    <ClCompile Include="code\Sword.cpp" />
+    <ClCompile Include="code\Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
