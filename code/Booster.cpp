@@ -1,5 +1,7 @@
 #include "Booster.h"
 #include "Enemy.h"
+#include "Player.h"
+#include "Score.h"
 
 #include <random>
 #include <iostream>
@@ -153,12 +155,12 @@ void Booster::showTime(std::string name, int cooldown, sf::Time timeLeft, sf::Ve
 
 void Booster::spawnBooster()
 {
-	sf::Time time = respawnTimeAcc.getElapsedTime();
+	sf::Time timeAcc = respawnTimeAcc.getElapsedTime();
 	std::random_device pos;
 	std::uniform_real_distribution<float> rangeX(0, 1280 - booster.getSize().x);
 	std::uniform_real_distribution<float> rangeY(0, GROUND_HEIGHT - booster.getSize().y);	
 
-	if (time.asMilliseconds() >= cooldownAccelerator && boosterCanBeSpawned[0] == true)
+	if (timeAcc.asMilliseconds() >= cooldownAccelerator && boosterCanBeSpawned[0] == true)
 	{
 		booster.setPosition(rangeX(pos), rangeY(pos));
 		boosterCanBeSpawned[0] = false;
@@ -247,6 +249,12 @@ void Booster::accel(Player* object)
 	sf::Time time = timePassed.getElapsedTime();
 	int duration = 10000;	
 	showTime("Accelerator", cooldownAccelerator, time, sf::Vector2f (600.f,620.f));
+
+	if (time.asMilliseconds() >= duration)//musi byc przed tym drugim ifem - inaczej po zebraniu czasem sie nie zalacza booster, czas sie resetuje w kolejnym wywolaniu funkcji dopiero?
+	{
+		boosterActive = false;
+	}
+
 	if (object->getShape().getGlobalBounds().intersects(booster.getGlobalBounds()))
 	{
 		timePassed.restart();
@@ -254,22 +262,13 @@ void Booster::accel(Player* object)
 		booster.setPosition(-50.f, -50.f);
 		respawnTimeAcc.restart();
 		boosterCanBeSpawned[0] = true;
-		
 	}
-	//object->setPlayerTexturePosition();
-
 	object->movementPlayer(boosterActive);
-
-	if (time.asMilliseconds() >= duration)
-	{
-		boosterActive = false;
-		timePassed.restart();
-	}
-
 }
 
 void Booster::destroy(Player* object, Enemy* enemy, Score* score)
 {	
+	shellNo = object->NUMBER_OF_SHELL;
 	sf::Time time = timePassedDes.getElapsedTime();
 	sf::Time timeEnemyRespawn[NUMBER_OF_ENEMIES];
 	int duration = 5000;
@@ -293,7 +292,7 @@ void Booster::destroy(Player* object, Enemy* enemy, Score* score)
 
 	for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
 	{
-		for (int j = 0; j<NUMBER_OF_SHELL;j++)
+		for (int j = 0; j<shellNo;j++)
 		{
 			if (boosterActiveDes == true && object->getShapeShell(j).getGlobalBounds().intersects(enemy->getShape(i).getGlobalBounds()))
 			{

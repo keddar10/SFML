@@ -151,10 +151,15 @@
     <ClInclude Include="code\Interactive.h" />
     <ClInclude Include="code\Inventory.h" />
     <ClInclude Include="code\Item.h" />
+    <ClInclude Include="code\Item2.h" />
     <ClInclude Include="code\Movement.h" />
     <ClInclude Include="code\Obstacle.h" />
     <ClInclude Include="code\Player.h" />
+    <ClInclude Include="code\PotionHP.h" />
+    <ClInclude Include="code\PotionMP.h" />
     <ClInclude Include="code\Score.h" />
+    <ClInclude Include="code\Sword.h" />
+    <ClInclude Include="code\Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="code\Background.cpp" />
@@ -166,11 +171,16 @@
     <ClCompile Include="code\Interactive.cpp" />
     <ClCompile Include="code\Inventory.cpp" />
     <ClCompile Include="code\Item.cpp" />
+    <ClCompile Include="code\Item2.cpp" />
     <ClCompile Include="code\Movement.cpp" />
     <ClCompile Include="code\Obstacle.cpp" />
     <ClCompile Include="code\Player.cpp" />
+    <ClCompile Include="code\PotionHP.cpp" />
+    <ClCompile Include="code\PotionMP.cpp" />
     <ClCompile Include="code\Score.cpp" />
     <ClCompile Include="code\SFML.cpp" />
+    <ClCompile Include="code\Sword.cpp" />
+    <ClCompile Include="code\Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

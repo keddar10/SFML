@@ -5,16 +5,17 @@
 
 #include "DEFINITIONS.h"
 
-#include "Obstacle.h"
-#include "Enemy.h"
-#include "Coin.h"
-#include "Score.h"
-#include "Inventory.h"
 
 /* forward declarations */
-class Item;
+//class Item;
+class Obstacle;
+class Enemy;
+class Coin;
+class Score;
+class Inventory;
+class Item2;
 
-class Player : public Obstacle
+class Player //: public Obstacle
 {
 public:
 
@@ -55,14 +56,14 @@ public:
 
 	//std::vector <sf::RectangleShape> inventory;
 	//std::vector <bool> canBeUsed;//?
-	void getItem(sf::RectangleShape);
-	void useItem( Score*, Score*, Inventory*, sf::Event& );
+	void addItemToPlayer(sf::RectangleShape);
+	void useItem( Score*, Score*, Inventory*, sf::Event&, Item2* );
 
 	sf::RectangleShape getShape();
 	sf::RectangleShape getShapeShell(int );
 
-protected:
 	static inline constexpr std::uint8_t NUMBER_OF_SHELL = 4;
+protected:
 
 	float jumpHeight = 0.f;
 	float jumpRange = 190.f;
@@ -90,6 +91,8 @@ protected:
 	sf::Clock timePassed;
 	sf::Clock animationClockPlayer;
 
+	Obstacle* pl_leftB;
+	Obstacle* pl_rightB;
 
 
 //	sf::Event itemIsUsed;

@@ -1,5 +1,5 @@
 #include "Chest.h"
-
+#include "Player.h"
 
 Chest::Chest(sf::Vector2f position, int i)
 {

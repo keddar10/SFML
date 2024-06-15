@@ -15,6 +15,10 @@ Background::Background()
 	backgroundSprite.setPosition(initialPosition);
 	//setCoinTexture();
 }
+Background::~Background()
+{
+
+}
 
 void Background::drawTo(sf::RenderWindow& window)
 {

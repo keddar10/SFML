@@ -1,10 +1,10 @@
 #pragma once
 //#include "Interactive.h"
 #include <iostream>
-#include "Player.h"
-
+#include "DEFINITIONS.h"
 #include<SFML/Graphics.hpp>
 
+class Player;
 
 class Chest //: public Interactive
 {

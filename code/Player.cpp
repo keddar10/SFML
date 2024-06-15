@@ -4,6 +4,13 @@
 
 
 #include "Player.h"
+#include "Coin.h"
+#include "Enemy.h"
+#include "Inventory.h"
+#include "Item2.h"
+#include "Obstacle.h"
+#include "Score.h"
+
 
 
 //#include "Obstacle.h"
@@ -157,9 +164,6 @@ void Player::movementPlayer(bool accelActive)
 			playerSprite.move(movSpeed, 0.f);
 			player.move(movSpeed, 0.f);
 		}
-
-
-
 	}
 	else
 	{
@@ -253,9 +257,8 @@ void Player::getPos()
 
 bool Player::checkCollisionLeft()
 {
-	
-	float x0 = leftB.getPosition().x;
-	float xMax = rightB.getPosition().x;
+	float x0 = 0.f;// teraz daje te wartosci na stale przez forward declaration i usuniecie dziedziczenia
+	float xMax = WINDOW_WIDTH-1.f;//jw
 	if (player.getGlobalBounds().left < x0 ) player.setPosition(sf::Vector2f({ x0 , player.getPosition().y}));
 	if (player.getGlobalBounds().left > xMax-playerWidth) player.setPosition(sf::Vector2f({ xMax-playerWidth , player.getPosition().y }));
 	
@@ -302,7 +305,7 @@ void Player::collisionWithObstacle(Obstacle* platform)
 		player.setPosition(sf::Vector2f(player.getPosition().x, platform->posYMin() - playerHeight - V0_FALL_SPEED));//tutaj V0 FALL_SPEED jest offsetem jaki nadajê do ka¿dego styku gracza z platform¹, by siê nie zatapia³, prêdkoœæ powoduje zapadanie siê, im wiêksza tym wiêksze zatopienie
 			
 			isInAir(false);
-			timePassed.restart();
+			timePassed.restart();//TODO add coyote time
 	}
 
 	//Kolizja PRAWO
@@ -338,15 +341,13 @@ void Player::collisionWithObstacle(Obstacle* platform)
 }
 
 void Player::teleport()
-{
-	
-		player.setPosition(sf::Vector2f{ startPosition });
-	
+{	
+	player.setPosition(sf::Vector2f{ startPosition });	
 }
 
-void Player::glowPlayer(bool digit)
+void Player::glowPlayer(bool active)
 {	
-	if (digit == true)
+	if (active)
 	{
 		uint8_t shellThickness = 5;
 		sf::Vector2f shellDimenstionsW(playerWidth + shellThickness, shellThickness);
@@ -381,32 +382,36 @@ void Player::glowPlayer(bool digit)
 	
 }
 
-void Player::getItem(sf::RectangleShape item)
-{
-	
-	itemCount++;
+//void Player::addItemToPlayer(sf::RectangleShape item)
+//{
+//	
+//	itemCount++;//cyhba tego nie potrzebuje
+//
+//}
 
-}
 
-
-void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event)
+void Player::useItem(Score* potionVis, Score* scoreVis, Inventory* inventory, sf::Event &event, Item2* itemUsed)
 {
 	if (event.type == sf::Event::KeyReleased && event.key.code == sf::Keyboard::C)
 	{
-		if (itemCount>0 )
+		if (/*itemCount>0 &&*/inventory->getItemCount()>0 && inventory->getSwitchInv())
 		{
-			//std::cout << "Player::useItem() is called" << '\n';
-			itemCount--;
+			std::cout << "Player::useItem() is called" << '\n';
+			//itemCount--;
 			potionVis->usePotion();
 			scoreVis->getScore(10);
-			
-			inventory->deleteItem();
-
+			//itemUsed->useEffect();
+			if (inventory->getItemSlot(itemUsed->getItemName()) == inventory->getItemSelector() - 1)//TODO po uzyciu wszystkich itemow danego typu nie ma przeskoku na "kolejny" tylko uzywa sie caly czas ten, ktorego juz nie ma
+			{
+				std::cout << "getItemSlot:" << inventory->getItemSlot(itemUsed->getItemName()) << '\n';
+				std::cout << "getItemSelector: " << inventory->getItemSelector() << '\n';
+				inventory->deleteItem(itemUsed);
+			}
 		}
-		//else
-		//{
-		//	std::cout << "Brak odpowiedniego przedmiotu!" << '\n';
-		//}
+		else if (inventory->getItemCount() == 0)
+		{
+			std::cout << "Player::useItem() Brak odpowiedniego przedmiotu!" << '\n';
+		}
 	}
 }
 
