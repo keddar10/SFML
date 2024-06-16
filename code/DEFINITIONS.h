@@ -8,12 +8,12 @@
 #define WINDOW_HEIGHT 720
 #define GROUND_HEIGHT 600
 #define BITS_PER_PIXEL 32
-#define NUMBER_OF_ENEMIES 2
+//#define NUMBER_OF_ENEMIES 2
 #define NUMBER_OF_SHOTS 32 //mog¹ byc tylko wielokrotnosci czworki!
 #define NUMBER_OF_COINS 2
 #define NUMBER_OF_CHESTS 1
 //#define NUMBER_OF_PLATFORMS 13
-
+static inline constexpr std::uint8_t NUMBER_OF_ENEMIES = 2;//nie wiem czy tak sie robi - doczytaæ
 struct Const final {
 	static inline constexpr int z = 100;
 };

@@ -5,6 +5,7 @@
 class Enemy;
 class Player;
 class Score;
+class Obstacle;
 
 class Booster// : public Enemy, public Player
 {
@@ -17,7 +18,7 @@ public:
 
 	void accel(Player* object );
 	void destroy(Player* object, Enemy* enemy, Score* score);
-	void slow(Player* object, Enemy* enemy);
+	void slow(Player* object, Enemy* enemy, Obstacle* frame);
 	void friendShots(Player* object, Enemy* enemy, Booster* helps, Booster* ptrShot, Score* score);
 	void moveHelper();
 	void moveShot(int);

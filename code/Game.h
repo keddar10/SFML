@@ -43,16 +43,19 @@ public:
 	static inline constexpr std::uint8_t NUMBER_OF_ITEMS = 11;
 	static inline constexpr std::uint8_t NUMBER_OF_HP_POTIONS = 4;
 	static inline constexpr std::uint8_t NUMBER_OF_MP_POTIONS = 2;
+	//static inline constexpr std::uint8_t NUMBER_OF_ENEMIES = 2;
+	//static inline constexpr std::uint8_t NUMBER_OF_COINS = 2;
 private:
 	
 	sf::RenderWindow* window;
 	Player* player;
-	//std::unique_ptr<Player> player; to tomek mi coœ napisa³ ¿e nie trzeba robuiæ delete po new, ani new nawet 
+	//std::unique_ptr<Player> player; //to tomek mi coœ napisa³ ¿e nie trzeba robuiæ delete po new, ani new nawet 
 	Obstacle* platform[NUMBER_OF_PLATFORMS];
 	Obstacle* boundary;
 	Obstacle* ground;
+	Obstacle* frame;
 	Enemy* enemy[NUMBER_OF_ENEMIES];
-	Coin* coin[2];
+	Coin* coin[NUMBER_OF_COINS];
 	Score* scoreVis;
 
 	Booster* booster;

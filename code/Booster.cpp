@@ -2,6 +2,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "Score.h"
+#include "Obstacle.h"
 
 #include <random>
 #include <iostream>
@@ -308,7 +309,7 @@ void Booster::destroy(Player* object, Enemy* enemy, Score* score)
 
 
 
-void Booster::slow(Player* object, Enemy* enemy)
+void Booster::slow(Player* object, Enemy* enemy, Obstacle* frame)
 {
 	sf::Time time = timePassedSlo.getElapsedTime();	
 	sf::Time timeToShow = timePassedSloShow.getElapsedTime();
@@ -320,6 +321,7 @@ void Booster::slow(Player* object, Enemy* enemy)
 		{
 			enemy->moveEnemy(i, boosterActiveSlo);
 			enemy->moveEnemySprite(i);
+			enemy->enemyFrameBounce(i, frame);
 		}
 		timePassedSlo.restart();
 	}

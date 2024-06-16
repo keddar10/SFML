@@ -1,7 +1,7 @@
 #include<iostream>
 #include "Enemy.h"
 //#include "Score.h"
-//#include"Obstacle.h"
+#include"Obstacle.h"
 
 #include <algorithm>
 #include <random>
@@ -74,14 +74,14 @@ float Enemy::changeDirection(float& mov)
 
 
 
-void Enemy::moveEnemy(int i)
-{
-
-	if (enemy[i].getGlobalBounds().left < 0.f || enemy[i].getGlobalBounds().left > WINDOW_WIDTH - enemy[i].getSize().x) changeDirection(movX[i]);
-	if (enemy[i].getGlobalBounds().top < 0.f || enemy[i].getGlobalBounds().top > GROUND_HEIGHT - enemy[i].getSize().y) changeDirection(movY[i]);	
-	
-	enemy[i].setPosition(enemy[i].getPosition().x + movX[i], enemy[i].getPosition().y + movY[i]);
-}
+//void Enemy::moveEnemy(int i)
+//{
+//
+//	if (enemy[i].getGlobalBounds().left < 0.f || enemy[i].getGlobalBounds().left > WINDOW_WIDTH - enemy[i].getSize().x) changeDirection(movX[i]);
+//	if (enemy[i].getGlobalBounds().top < 0.f || enemy[i].getGlobalBounds().top > GROUND_HEIGHT - enemy[i].getSize().y) changeDirection(movY[i]);	
+//	
+//	enemy[i].setPosition(enemy[i].getPosition().x + movX[i], enemy[i].getPosition().y + movY[i]);
+//}
 
 
 void Enemy::moveEnemy(int i, bool slowerActive)
@@ -156,6 +156,17 @@ void Enemy::enemyIsDead(int digit)
 	{
 		enemyDead[digit].restart();
 	}
+}
+
+void Enemy::enemyFrameBounce(int i, Obstacle* frame) {
+	if (enemy[i].getGlobalBounds().left < frame->getRightBPos() && enemy[i].getGlobalBounds().top<frame->getDownBPos()) {
+		changeDirection(movX[i]);
+	}
+	
+	if (enemy[i].getGlobalBounds().top < frame->getDownBPos() && enemy[i].getGlobalBounds().left<frame->getRightBPos()) {
+		changeDirection(movY[i]);
+	}
+
 }
 
 Enemy::~Enemy()

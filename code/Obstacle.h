@@ -11,6 +11,7 @@ public:
 	Obstacle();
 	Obstacle(sf::Vector2f gH0, float);
 	Obstacle(float pos0);
+	Obstacle(float, float);
 	
 
 	~Obstacle();
@@ -51,6 +52,7 @@ protected:
 public:
 	float getLeftBPos();
 	float getRightBPos();
+	float getDownBPos();
 	
 	
 	

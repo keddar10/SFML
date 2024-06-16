@@ -36,13 +36,13 @@ Game::Game()
 	player = new Player();
 
 
-	//player = std::make_unique<Player>(); w nag³owku jest kom
+	//player = std::make_unique<Player>();// w nag³owku jest kom
 	enemy[0] = new Enemy({40,40}, /*{620.f,110.f},*/ 0);
 	enemy[1] = new Enemy({70,70}, /*{700.f,300.f},*/ 1);
 	
 	boundary = new Obstacle();
 	ground = new Obstacle({ GROUND_HEIGHT });
-
+	frame = new Obstacle(280.f, 120.f);
 	//Platformy - d³ugoœæ musi byæ wielokrotnoœci¹ 10!
 	platform[0] = new Obstacle({ 340.f, 430.f}, 160.f);
 	platform[1] = new Obstacle({ 100.f,500.f }, 170.f);
@@ -126,7 +126,7 @@ Game::~Game()
 		delete potionHP[i];
 	}
 	for (int i = NUMBER_OF_CHESTS - 1; 0<=i; --i){
-		delete potionMP[i];
+		delete chest[i];
 	}
 	delete background;
 	delete scoreVis;
@@ -141,12 +141,13 @@ Game::~Game()
 	for (int i = NUMBER_OF_PLATFORMS - 1; 0 <= i; --i) {
 		delete platform[i];
 	}
+	delete frame;
 	delete ground;
 	delete boundary;
 	for (int i = NUMBER_OF_ENEMIES - 1; 0<=i; --i){
 		delete enemy[i];
 	}
-	delete player;
+	//delete player;
 	delete window;
 }
 
@@ -218,7 +219,7 @@ void Game::Loop()
 		//slower
 		for (int i = 0; i < NUMBER_OF_ENEMIES; i++)
 		{
-			slower->slow(player, enemy[i]);
+			slower->slow(player, enemy[i], frame);
 		}
 
 		//helper
@@ -317,6 +318,7 @@ void Game::Loop()
 		scoreVis->drawScore(*window);
 		ground->drawObstacle(*window);
 		boundary->drawBoundary(*window);
+		frame->drawBoundary(*window);
 
 		booster->drawBooster(*window);
 		destroyer->drawBooster(*window);

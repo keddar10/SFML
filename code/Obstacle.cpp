@@ -53,6 +53,24 @@ Obstacle::Obstacle(sf::Vector2f gH0, float length)
 		platformSprite[i].setPosition(platform.getPosition().x + 10 * i, platform.getPosition().y);
 	}
 }
+//rama chroniaca bohatera
+Obstacle::Obstacle(float dimX, float dimY) {
+	leftB.setSize(sf::Vector2f{ 1.f, dimY });
+	leftB.setPosition(sf::Vector2f{ 0.f, 0.f });
+	leftB.setFillColor(sf::Color::Yellow);
+
+	rightB.setSize(sf::Vector2f{ 1.f, dimY });
+	rightB.setPosition(sf::Vector2f{ dimX, 0.f });
+	rightB.setFillColor(leftB.getFillColor());
+
+	upB.setSize(sf::Vector2f{ dimX,1.f });
+	upB.setPosition(sf::Vector2f{ 0.f, 0.f });
+	upB.setFillColor(leftB.getFillColor());
+
+	downB.setSize(upB.getSize());
+	downB.setPosition(upB.getPosition().x, upB.getPosition().y+dimY);
+	downB.setFillColor(leftB.getFillColor());
+}
 
 
 Obstacle::~Obstacle()
@@ -91,6 +109,11 @@ float Obstacle::getLeftBPos()
 float Obstacle::getRightBPos()
 {
 	return rightB.getPosition().x;
+}
+
+float Obstacle::getDownBPos()
+{
+	return downB.getPosition().y;
 }
 
 

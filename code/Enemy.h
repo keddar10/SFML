@@ -4,6 +4,8 @@
 //#include "Player.h"
 #include <iostream>
 
+class Obstacle;
+
 class Enemy
 {
 public:
@@ -27,14 +29,9 @@ public:
 	bool enemyCanBeSpawned(int );
 	void enemyIsDead(int);
 
-	void changeEnemyMovementSpeed(float*);
-	void changeEnemyMovementSpeed();
 
 
-
-	float returnMovSpeed(float);
-
-	void learnReferences(float*);
+	void enemyFrameBounce(int i, Obstacle* frame);
 
 	void moveEnemySprite(int);
 	
